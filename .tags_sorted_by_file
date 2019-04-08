@@ -1,0 +1,127 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+admin	api/admin.py	/^from django.contrib import admin$/;"	i
+ApiConfig	api/apps.py	/^class ApiConfig(AppConfig):$/;"	c
+AppConfig	api/apps.py	/^from django.apps import AppConfig$/;"	i
+name	api/apps.py	/^    name = 'api'$/;"	v	class:ApiConfig
+Migration	api/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+db	api/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+deletion	api/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+dependencies	api/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+django	api/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+fields	api/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+initial	api/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
+migrations	api/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+models	api/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+models	api/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+name	api/migrations/0001_initial.py	/^            name='UserInfo',$/;"	v	class:Migration
+name	api/migrations/0001_initial.py	/^            name='UserToken',$/;"	v	class:Migration
+operations	api/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+Migration	api/migrations/0002_userinfo_mail.py	/^class Migration(migrations.Migration):$/;"	c
+dependencies	api/migrations/0002_userinfo_mail.py	/^    dependencies = [$/;"	v	class:Migration
+field	api/migrations/0002_userinfo_mail.py	/^            field=models.CharField(default='', max_length=32),$/;"	v	class:Migration
+migrations	api/migrations/0002_userinfo_mail.py	/^from django.db import migrations, models$/;"	i
+model_name	api/migrations/0002_userinfo_mail.py	/^            model_name='userinfo',$/;"	v	class:Migration
+models	api/migrations/0002_userinfo_mail.py	/^from django.db import migrations, models$/;"	i
+name	api/migrations/0002_userinfo_mail.py	/^            name='mail',$/;"	v	class:Migration
+operations	api/migrations/0002_userinfo_mail.py	/^    operations = [$/;"	v	class:Migration
+Migration	api/migrations/0003_auto_20190403_1744.py	/^class Migration(migrations.Migration):$/;"	c
+dependencies	api/migrations/0003_auto_20190403_1744.py	/^    dependencies = [$/;"	v	class:Migration
+field	api/migrations/0003_auto_20190403_1744.py	/^            field=models.IntegerField(default=0, max_length=64),$/;"	v	class:Migration
+migrations	api/migrations/0003_auto_20190403_1744.py	/^from django.db import migrations, models$/;"	i
+model_name	api/migrations/0003_auto_20190403_1744.py	/^            model_name='userinfo',$/;"	v	class:Migration
+models	api/migrations/0003_auto_20190403_1744.py	/^from django.db import migrations, models$/;"	i
+name	api/migrations/0003_auto_20190403_1744.py	/^            name='phone',$/;"	v	class:Migration
+operations	api/migrations/0003_auto_20190403_1744.py	/^    operations = [$/;"	v	class:Migration
+Migration	api/migrations/0004_auto_20190403_1745.py	/^class Migration(migrations.Migration):$/;"	c
+dependencies	api/migrations/0004_auto_20190403_1745.py	/^    dependencies = [$/;"	v	class:Migration
+field	api/migrations/0004_auto_20190403_1745.py	/^            field=models.IntegerField(default=0, max_length=128),$/;"	v	class:Migration
+migrations	api/migrations/0004_auto_20190403_1745.py	/^from django.db import migrations, models$/;"	i
+model_name	api/migrations/0004_auto_20190403_1745.py	/^            model_name='userinfo',$/;"	v	class:Migration
+models	api/migrations/0004_auto_20190403_1745.py	/^from django.db import migrations, models$/;"	i
+name	api/migrations/0004_auto_20190403_1745.py	/^            name='phone',$/;"	v	class:Migration
+operations	api/migrations/0004_auto_20190403_1745.py	/^    operations = [$/;"	v	class:Migration
+Migration	api/migrations/0005_auto_20190403_1745.py	/^class Migration(migrations.Migration):$/;"	c
+dependencies	api/migrations/0005_auto_20190403_1745.py	/^    dependencies = [$/;"	v	class:Migration
+field	api/migrations/0005_auto_20190403_1745.py	/^            field=models.IntegerField(default=0, max_length=256),$/;"	v	class:Migration
+migrations	api/migrations/0005_auto_20190403_1745.py	/^from django.db import migrations, models$/;"	i
+model_name	api/migrations/0005_auto_20190403_1745.py	/^            model_name='userinfo',$/;"	v	class:Migration
+models	api/migrations/0005_auto_20190403_1745.py	/^from django.db import migrations, models$/;"	i
+name	api/migrations/0005_auto_20190403_1745.py	/^            name='phone',$/;"	v	class:Migration
+operations	api/migrations/0005_auto_20190403_1745.py	/^    operations = [$/;"	v	class:Migration
+Migration	api/migrations/0006_auto_20190403_1747.py	/^class Migration(migrations.Migration):$/;"	c
+dependencies	api/migrations/0006_auto_20190403_1747.py	/^    dependencies = [$/;"	v	class:Migration
+field	api/migrations/0006_auto_20190403_1747.py	/^            field=models.CharField(default='', max_length=256),$/;"	v	class:Migration
+field	api/migrations/0006_auto_20190403_1747.py	/^            field=models.CharField(default=0, max_length=128),$/;"	v	class:Migration
+migrations	api/migrations/0006_auto_20190403_1747.py	/^from django.db import migrations, models$/;"	i
+model_name	api/migrations/0006_auto_20190403_1747.py	/^            model_name='userinfo',$/;"	v	class:Migration
+models	api/migrations/0006_auto_20190403_1747.py	/^from django.db import migrations, models$/;"	i
+name	api/migrations/0006_auto_20190403_1747.py	/^            name='mail',$/;"	v	class:Migration
+name	api/migrations/0006_auto_20190403_1747.py	/^            name='phone',$/;"	v	class:Migration
+operations	api/migrations/0006_auto_20190403_1747.py	/^    operations = [$/;"	v	class:Migration
+Migration	api/migrations/0007_auto_20190403_1755.py	/^class Migration(migrations.Migration):$/;"	c
+dependencies	api/migrations/0007_auto_20190403_1755.py	/^    dependencies = [$/;"	v	class:Migration
+field	api/migrations/0007_auto_20190403_1755.py	/^            field=models.IntegerField(choices=[(0, '普通用户'), (1, 'VIP')], default=0),$/;"	v	class:Migration
+migrations	api/migrations/0007_auto_20190403_1755.py	/^from django.db import migrations, models$/;"	i
+model_name	api/migrations/0007_auto_20190403_1755.py	/^            model_name='userinfo',$/;"	v	class:Migration
+models	api/migrations/0007_auto_20190403_1755.py	/^from django.db import migrations, models$/;"	i
+name	api/migrations/0007_auto_20190403_1755.py	/^            name='user_type',$/;"	v	class:Migration
+operations	api/migrations/0007_auto_20190403_1755.py	/^    operations = [$/;"	v	class:Migration
+UserInfo	api/models.py	/^class UserInfo(models.Model):$/;"	c
+UserToken	api/models.py	/^class UserToken(models.Model):$/;"	c
+mail	api/models.py	/^    mail = models.CharField(max_length = 256,default='')$/;"	v	class:UserInfo
+models	api/models.py	/^from django.db import models$/;"	i
+password	api/models.py	/^    password = models.CharField(max_length = 64)$/;"	v	class:UserInfo
+phone	api/models.py	/^    phone = models.CharField(max_length=128, default=0)$/;"	v	class:UserInfo
+token	api/models.py	/^    token = models.CharField(max_length = 64)$/;"	v	class:UserToken
+user	api/models.py	/^    user = models.OneToOneField(UserInfo, on_delete = models.CASCADE)$/;"	v	class:UserToken
+user_type	api/models.py	/^    user_type = models.IntegerField(choices = user_type_choices,default=0)$/;"	v	class:UserInfo
+user_type_choices	api/models.py	/^    user_type_choices = ($/;"	v	class:UserInfo
+username	api/models.py	/^    username = models.CharField(max_length = 32,unique = True)$/;"	v	class:UserInfo
+TestCase	api/tests.py	/^from django.test import TestCase$/;"	i
+APIView	api/views.py	/^from rest_framework.views import APIView$/;"	i
+AuthView	api/views.py	/^class AuthView(APIView):$/;"	c
+HttpResponse	api/views.py	/^from django.shortcuts import render,HttpResponse$/;"	i
+JsonResponse	api/views.py	/^from django.http import JsonResponse$/;"	i
+RegView	api/views.py	/^class RegView(APIView):$/;"	c
+hashlib	api/views.py	/^    import hashlib$/;"	i
+md5	api/views.py	/^def md5(user):$/;"	f
+models	api/views.py	/^from api import models$/;"	i
+post	api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	m	class:AuthView
+post	api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	m	class:RegView
+render	api/views.py	/^from django.shortcuts import render,HttpResponse$/;"	i
+time	api/views.py	/^    import time$/;"	i
+pymysql	bishe/__init__.py	/^import pymysql$/;"	i
+ALLOWED_HOSTS	bishe/settings.py	/^ALLOWED_HOSTS = []$/;"	v
+AUTH_PASSWORD_VALIDATORS	bishe/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+BASE_DIR	bishe/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
+DATABASES	bishe/settings.py	/^DATABASES = {$/;"	v
+DEBUG	bishe/settings.py	/^DEBUG = True$/;"	v
+INSTALLED_APPS	bishe/settings.py	/^INSTALLED_APPS = [$/;"	v
+LANGUAGE_CODE	bishe/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+MIDDLEWARE	bishe/settings.py	/^MIDDLEWARE = [$/;"	v
+REST_FRAMEWORK	bishe/settings.py	/^REST_FRAMEWORK = {$/;"	v
+ROOT_URLCONF	bishe/settings.py	/^ROOT_URLCONF = 'bishe.urls'$/;"	v
+SECRET_KEY	bishe/settings.py	/^SECRET_KEY = 'on1pbe_a&zu(um0zcrdci@z9di7h6zj=p5l^04l6wvu1ddw*yq'$/;"	v
+STATIC_URL	bishe/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+TEMPLATES	bishe/settings.py	/^TEMPLATES = [$/;"	v
+TIME_ZONE	bishe/settings.py	/^TIME_ZONE = 'UTC'$/;"	v
+USE_I18N	bishe/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	bishe/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	bishe/settings.py	/^USE_TZ = True$/;"	v
+WSGI_APPLICATION	bishe/settings.py	/^WSGI_APPLICATION = 'bishe.wsgi.application'$/;"	v
+os	bishe/settings.py	/^import os$/;"	i
+admin	bishe/urls.py	/^from django.contrib import admin$/;"	i
+path	bishe/urls.py	/^from django.urls import path$/;"	i
+urlpatterns	bishe/urls.py	/^urlpatterns = [ $/;"	v
+views	bishe/urls.py	/^from api import views$/;"	i
+application	bishe/wsgi.py	/^application = get_wsgi_application()$/;"	v
+get_wsgi_application	bishe/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	i
+os	bishe/wsgi.py	/^import os$/;"	i
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+execute_from_command_line	manage.py	/^        from django.core.management import execute_from_command_line$/;"	i
+os	manage.py	/^import os$/;"	i
+sys	manage.py	/^import sys$/;"	i
