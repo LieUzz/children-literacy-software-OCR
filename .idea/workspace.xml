@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="61322b10-2ea7-475a-8288-872ba8bcec99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bishe/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bishe/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,14 +49,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="133" column="34" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+            <state relative-caret-position="395">
+              <caret line="272" column="33" selection-start-line="272" selection-start-column="33" selection-end-line="272" selection-end-column="33" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#223#417#0" />
                 <element signature="e#448#1274#0" />
                 <element signature="e#1252#1845#0" />
                 <element signature="e#1880#2642#0" />
+                <element signature="e#3080#3842#0" />
+                <element signature="e#4163#5211#0" />
+                <element signature="e#4815#5509#0" />
                 <element signature="e#2681#3914#0" />
                 <element signature="e#3954#4858#0" />
                 <element signature="e#4898#5906#0" />
@@ -69,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bishe/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="56" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="56" />
+            <state relative-caret-position="275">
+              <caret line="27" column="53" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="53" />
               <folding>
                 <element signature="e#630#662#0" expanded="true" />
               </folding>
@@ -221,12 +225,12 @@
       <workItem from="1554370793908" duration="215000" />
       <workItem from="1554371048388" duration="9716000" />
       <workItem from="1554392097321" duration="22919000" />
-      <workItem from="1554954868063" duration="7762000" />
+      <workItem from="1554954868063" duration="9700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40612000" />
+    <option name="totallyTimeSpent" value="42550000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -255,7 +259,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.26712328" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.26712328" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32876712" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -374,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bishe/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="56" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="56" />
+        <state relative-caret-position="275">
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="53" />
           <folding>
             <element signature="e#630#662#0" expanded="true" />
           </folding>
@@ -384,14 +388,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="133" column="34" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+        <state relative-caret-position="395">
+          <caret line="272" column="33" selection-start-line="272" selection-start-column="33" selection-end-line="272" selection-end-column="33" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#223#417#0" />
             <element signature="e#448#1274#0" />
             <element signature="e#1252#1845#0" />
             <element signature="e#1880#2642#0" />
+            <element signature="e#3080#3842#0" />
+            <element signature="e#4163#5211#0" />
+            <element signature="e#4815#5509#0" />
             <element signature="e#2681#3914#0" />
             <element signature="e#3954#4858#0" />
             <element signature="e#4898#5906#0" />

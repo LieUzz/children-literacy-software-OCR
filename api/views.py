@@ -69,6 +69,7 @@ class RegView(APIView):
 
 class UserInfoView(APIView):
     #用于用户信息查找
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None, 'data': None}
         try:
@@ -89,7 +90,7 @@ class UserInfoView(APIView):
 
 class UserEditView(APIView):
     #用于用户信息编辑
-    #authentication_classes = []
+    authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -117,7 +118,29 @@ class UserEditView(APIView):
 
 class ModifyPasswordView(APIView):
     #用于用户信息编辑
-    #authentication_classes = []
+    authentication_classes = []
+    def post(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            username = request._request.POST.get('username')
+            pwd = request._request.POST.get('password')
+            user_obj = models.UserInfo.objects.filter(username=username).first()
+            if not user_obj:
+                ret['code'] = 2000
+                ret['msg'] = '该用户不存在'
+            else:
+                print(user_obj.username)
+                user_obj.password = pwd
+                user_obj.save()
+                ret['msg'] = '用户密码修改成功'
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
+
+class FogetPasswordView(APIView):
+    #用于用户信息编辑
+    authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -139,6 +162,7 @@ class ModifyPasswordView(APIView):
 
 class UserWordsNumView(APIView):
     #用于用户的识字量的导入
+    authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -174,6 +198,7 @@ class UserWordsNumView(APIView):
 class WordsTestOneView(APIView):
 
     # 用于词汇量测试的第一步
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None}
         try:
@@ -200,6 +225,7 @@ class WordsTestOneView(APIView):
 class WordsTestTwoView(APIView):
 
     # 用于词汇量测试的第一步
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None}
         try:
@@ -228,6 +254,7 @@ class WordsTestTwoView(APIView):
 class WordsTestView(APIView):
 
     # 用于词汇量测试结果
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None, 'wordnum':None}
         try:
@@ -246,6 +273,7 @@ class WordsTestView(APIView):
 class BookRecommendView(APIView):
 
     # 用于用户书籍推荐
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None, 'data': None}
         try:
