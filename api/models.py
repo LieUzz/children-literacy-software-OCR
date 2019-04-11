@@ -10,6 +10,8 @@ class UserInfo(models.Model):
     password = models.CharField(max_length = 64)
     phone = models.CharField(max_length=128, default=0)
     mail = models.CharField(max_length = 256,default='')
+    sex = models.CharField(max_length = 32,default='')
+    age = models.CharField(max_length = 32,default='')
 
 class UserToken(models.Model):
     user = models.OneToOneField(UserInfo, on_delete = models.CASCADE)

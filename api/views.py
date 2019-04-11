@@ -27,14 +27,15 @@ class AuthView(APIView):
             pwd = request._request.POST.get('password')
             obj = models.UserInfo.objects.filter(username = user, password = pwd).first()
             if not obj:
-                ret['code'] = 2000,
+                ret['code']=2000
                 ret['msg'] = "用户名或密码错误"
-            # 为登录用户创建token
-            token = md5(user)
-            # 更新或创建
-            models.UserToken.objects.update_or_create(user=obj,defaults={'token':token})
-            ret['msg'] = "用户登录成功"
-            ret['token'] = token
+            else:
+                # 为登录用户创建token
+                token = md5(user)
+                # 更新或创建
+                models.UserToken.objects.update_or_create(user=obj,defaults={'token':token})
+                ret['msg'] = "用户登录成功"
+                ret['token'] = token
 
         except Exception as e:
             pass
@@ -50,9 +51,17 @@ class RegView(APIView):
             pwd = request._request.POST.get('password')
             phone = request._request.POST.get('phone')
             mail = request._request.POST.get('mail')
-            obj = models.UserInfo(username = user, password = pwd, phone = phone, mail = mail)
-            obj.save()
-            ret['msg'] = "用户注册成功"
+            sex = request._request.POST.get('sex')
+            age = request._request.POST.get('age')
+            objjudge = models.UserInfo.objects.filter(username=user).first()
+            if objjudge:
+                ret['code']=2000
+                ret['msg'] = "用户名已存在"
+            else:
+                obj = models.UserInfo(username = user, password = pwd, phone = phone,
+                                      mail = mail, sex = sex, age = age)
+                obj.save()
+                ret['msg'] = "用户注册成功"
 
         except Exception as e:
             pass
@@ -78,6 +87,36 @@ class UserInfoView(APIView):
             pass
         return HttpResponse(ret)
 
+class UserEditView(APIView):
+    #用于用户信息编辑
+    authentication_classes = []
+    def post(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            username = request._request.POST.get('username')
+            pwd = request._request.POST.get('password')
+            phone = request._request.POST.get('phone')
+            mail = request._request.POST.get('mail')
+            sex = request._request.POST.get('sex')
+            age = request._request.POST.get('age')
+            user_obj = models.UserInfo.objects.filter(username=username).first()
+            if not user_obj:
+                ret['code'] = 2000
+                ret['msg'] = '该用户不存在'
+            else:
+                print(user_obj.username)
+                user_obj.password = pwd
+                user_obj.phone = phone
+                user_obj.mail = mail
+                user_obj.sex = sex
+                user_obj.age = age
+                user_obj.save()
+                ret['msg'] = '用户修改成功'
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
+
 class UserWordsNumView(APIView):
     #用于用户的识字量的导入
     def post(self, request, *args, **kwargs):
@@ -87,7 +126,7 @@ class UserWordsNumView(APIView):
             user = request._request.POST.get('username')
             obj = models.UserInfo.objects.filter(username=user).first()
             if not obj:
-                ret['code'] = 2000,
+                ret['code'] = 2000
                 ret['msg'] = "用户名不存在"
             # 更新或创建
             models.UserWordsNum.objects.update_or_create(user=obj, defaults={'wordsnum': wordsnum})
