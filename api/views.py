@@ -109,7 +109,7 @@ class UserEditView(APIView):
                 user_obj.sex = sex
                 user_obj.age = age
                 user_obj.save()
-                ret['msg'] = '用户修改成功'
+                ret['msg'] = '用户信息修改成功'
 
         except Exception as e:
             pass
@@ -131,7 +131,7 @@ class ModifyPasswordView(APIView):
                 print(user_obj.username)
                 user_obj.password = pwd
                 user_obj.save()
-                ret['msg'] = '用户修改成功'
+                ret['msg'] = '用户密码修改成功'
 
         except Exception as e:
             pass
