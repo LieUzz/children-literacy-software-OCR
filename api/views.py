@@ -89,7 +89,7 @@ class UserInfoView(APIView):
 
 class UserEditView(APIView):
     #用于用户信息编辑
-    authentication_classes = []
+    #authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
