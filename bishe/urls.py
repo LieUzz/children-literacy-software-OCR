@@ -23,6 +23,7 @@ urlpatterns = [
     path('api/auth/', views.AuthView.as_view()),
     path('api/register/', views.RegView.as_view()),
     path('api/userinfo/', views.UserInfoView.as_view()),
+    path('api/modifypassword/', views.ModifyPasswordView.as_view()),
     path('api/userinfoedit/',views.UserEditView.as_view()),
     #对词汇量的url
     path('api/userwordsnum/', views.UserWordsNumView.as_view()),

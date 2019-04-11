@@ -94,7 +94,6 @@ class UserEditView(APIView):
         ret = {'code':1001, 'msg':None}
         try:
             username = request._request.POST.get('username')
-            pwd = request._request.POST.get('password')
             phone = request._request.POST.get('phone')
             mail = request._request.POST.get('mail')
             sex = request._request.POST.get('sex')
@@ -105,11 +104,32 @@ class UserEditView(APIView):
                 ret['msg'] = '该用户不存在'
             else:
                 print(user_obj.username)
-                user_obj.password = pwd
                 user_obj.phone = phone
                 user_obj.mail = mail
                 user_obj.sex = sex
                 user_obj.age = age
+                user_obj.save()
+                ret['msg'] = '用户修改成功'
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
+
+class ModifyPasswordView(APIView):
+    #用于用户信息编辑
+    #authentication_classes = []
+    def post(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            username = request._request.POST.get('username')
+            pwd = request._request.POST.get('password')
+            user_obj = models.UserInfo.objects.filter(username=username).first()
+            if not user_obj:
+                ret['code'] = 2000
+                ret['msg'] = '该用户不存在'
+            else:
+                print(user_obj.username)
+                user_obj.password = pwd
                 user_obj.save()
                 ret['msg'] = '用户修改成功'
 
