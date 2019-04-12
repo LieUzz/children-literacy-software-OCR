@@ -70,7 +70,6 @@ class RegView(APIView):
 
 class UserInfoView(APIView):
     #用于用户信息查找
-    #authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None, 'data': None}
         try:
@@ -91,7 +90,6 @@ class UserInfoView(APIView):
 
 class UserEditView(APIView):
     #用于用户信息编辑
-    # authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -119,7 +117,6 @@ class UserEditView(APIView):
 
 class ModifyPasswordView(APIView):
     #用于用户信息编辑
-    #authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -163,7 +160,6 @@ class FogetPasswordView(APIView):
 
 class UserWordsNumView(APIView):
     #用于用户的识字量的导入
-    # authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -199,7 +195,6 @@ class UserWordsNumView(APIView):
 class WordsTestOneView(APIView):
 
     # 用于词汇量测试的第一步
-    # authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None}
         try:
@@ -226,7 +221,6 @@ class WordsTestOneView(APIView):
 class WordsTestTwoView(APIView):
 
     # 用于词汇量测试的第二步
-    # authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None}
         try:
@@ -254,7 +248,6 @@ class WordsTestTwoView(APIView):
 
 class WordsTestView(APIView):
     # 用于词汇量测试结果
-    # authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg1':None, 'msg2':None, 'wordnum':None}
         try:
@@ -281,35 +274,40 @@ class WordsTestView(APIView):
 class BookRecommendView(APIView):
 
     # 用于用户书籍推荐
-    authentication_classes = []
     def get(self, request, *args, **kwargs):
-        ret = {'code':1001, 'msg':None, 'data': None}
+        ret = {'code':1001, 'msg':None}
         try:
             username = request._request.GET.get('username')
+            print(username)
             user_obj = models.UserInfo.objects.filter(username=username).first()
             print(user_obj.id)
             userwordsnum = models.UserWordsNum.objects.filter(user_id=user_obj.id).first().wordsnum
             print(userwordsnum)
 
-            rank =0;
+            rank =0
+            flag = 0
             if userwordsnum == 0:
-                pass
+                flag = 1
             elif userwordsnum < 1000:
                 rank = 1
             elif userwordsnum < 1800:
-                rank = 2;
+                rank = 2
             elif userwordsnum < 2150:
-                rank = 3;
+                rank = 3
             elif userwordsnum < 2500:
-                rank = 4;
+                rank = 4
             elif userwordsnum < 2750:
-                rank = 5;
+                rank = 5
             else:
-                rank = 6;
-
-            books = models.RecommendBook.objects.filter(recommendrank=rank)
-            ser = serializers.BookRecommendSerializer(instance=books, many=True)
-            ret = json.dumps(ser.data, ensure_ascii=False)
+                rank = 6
+            if flag==1:
+                ret['msg'] = '用户未检测词汇量'
+                ret['code'] = 2000
+                return JsonResponse(ret)
+            else:
+                books = models.RecommendBook.objects.filter(recommendrank=rank)
+                ser = serializers.BookRecommendSerializer(instance=books, many=True)
+                ret = json.dumps(ser.data, ensure_ascii=False)
 
             # ret['msg'] = '用户查找成功'
 
@@ -319,12 +317,13 @@ class BookRecommendView(APIView):
 
 class TestView(APIView):
 
-    authentication_classes = [ ]
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code':1000, 'msg':None,'token':None}
         try:
+            isbn = request._request.GET.get('isbn')
             # 豆瓣网站获取数据Api
-            url = 'https://api.douban.com/v2/book/isbn/9787506394864?apikey=0b2bdeda43b5688921839c8ecb20399b'
+            url = 'https://api.douban.com/v2/book/isbn/'+isbn+'?apikey=0b2bdeda43b5688921839c8ecb20399b'
             # 包装头部
             firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
             # 构建请求
@@ -335,13 +334,29 @@ class TestView(APIView):
             # 转换成JSON
             data_json = json.loads(data)
             # print(data_json)
-            print('书名',data_json['title'])
-            print('作者',data_json['author'][0])
-            print('ISBN',data_json['isbn13'])
-            print('出版社',data_json['publisher'])
-            print('简介',data_json['summary'])
-            print('图片',data_json['images'])
+            title = data_json['title']
+            author = data_json['author'][0]
+            isbn13 = data_json['isbn13']
+            publisher = data_json['publisher']
+            summary = data_json['summary']
+            images = data_json['images']
+            print('书名',title)
+            print('作者',author)
+            print('ISBN',isbn13)
+            print('出版社',publisher)
+            print('简介',summary)
+            print('图片',images)
             # datas = json.dumps(data,ensure_ascii=False)
+            models.RecommendBook.objects.create(title= title,author=author,isbn=isbn13,recommendrank=6,
+                                                publisher=publisher,summary=summary,image=images)
+            # obj.title = title
+            # obj.author = author
+            # obj.isbn = isbn13
+            # obj.publisher = publisher
+            # obj.summary = summary
+            # obj.image = images
+            # obj.save()
+            ret['msg']='创建数据成功'
 
 
         except Exception as e:

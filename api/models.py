@@ -30,10 +30,12 @@ class BaseWords(models.Model):
     word = models.CharField(max_length=32)
 
 class RecommendBook(models.Model):
-    bookname = models.CharField(max_length = 64)
+    title = models.CharField(max_length = 64)
     author = models.CharField(max_length= 64)
-    press = models.CharField(max_length= 64, default='')
+    publisher = models.CharField(max_length= 64, default='')
     isbn = models.CharField(max_length= 64, default='')
+    summary = models.CharField(max_length= 1280, default= '')
+    image = models.CharField(max_length=320, default='')
     recommendrank = models.IntegerField(max_length=16, default=0)
 
 

@@ -20,4 +20,4 @@ class BookRecommendSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.RecommendBook
-        fields = ['bookname', 'author','press', 'isbn', 'recommendrank']
+        fields = ['title', 'author', 'publisher', 'isbn', 'summary', 'image']
