@@ -91,7 +91,7 @@ class UserInfoView(APIView):
 
 class UserEditView(APIView):
     #用于用户信息编辑
-    authentication_classes = []
+    # authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -140,7 +140,7 @@ class ModifyPasswordView(APIView):
         return JsonResponse(ret)
 
 class FogetPasswordView(APIView):
-    #用于用户信息编辑
+    #用于忘记密码
     authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
@@ -163,7 +163,7 @@ class FogetPasswordView(APIView):
 
 class UserWordsNumView(APIView):
     #用于用户的识字量的导入
-    authentication_classes = []
+    # authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -180,7 +180,7 @@ class UserWordsNumView(APIView):
             pass
         return JsonResponse(ret)
 
-    # 用于词汇量测试的获取
+    # 用于词汇量的获取
     def get(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None, 'wordsnum':None}
         try:
@@ -199,7 +199,7 @@ class UserWordsNumView(APIView):
 class WordsTestOneView(APIView):
 
     # 用于词汇量测试的第一步
-    authentication_classes = []
+    # authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None}
         try:
@@ -225,8 +225,8 @@ class WordsTestOneView(APIView):
 
 class WordsTestTwoView(APIView):
 
-    # 用于词汇量测试的第一步
-    authentication_classes = []
+    # 用于词汇量测试的第二步
+    # authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None}
         try:
@@ -253,19 +253,26 @@ class WordsTestTwoView(APIView):
         return HttpResponse(ret)
 
 class WordsTestView(APIView):
-
     # 用于词汇量测试结果
-    authentication_classes = []
+    # authentication_classes = []
     def get(self, request, *args, **kwargs):
-        ret = {'code':1001, 'msg':None, 'wordnum':None}
+        ret = {'code':1001, 'msg1':None, 'msg2':None, 'wordnum':None}
         try:
+            user = request._request.GET.get('username')
+            obj = models.UserInfo.objects.filter(username=user).first()
             wordfirst = request._request.GET.get('wordfirst')
             wordsecond = request._request.GET.get('wordsecond')
             wordrandom = sample(range(1, 10), 1)
             wordnum = int(wordfirst)*100 - 100 + int(wordsecond)*10 + wordrandom[0]
             print(wordfirst,wordsecond,wordnum,wordrandom)
-            ret['msg'] = '用户词汇量测试结果成功'
-            ret['wordnum'] = wordnum
+            if not obj:
+                ret['code'] = 2000
+                ret['msg1'] = "用户名不存在"
+            else:
+                ret['msg1'] = '用户词汇量测试结果成功'
+                ret['wordnum'] = wordnum
+                models.UserWordsNum.objects.update_or_create(user=obj, defaults={'wordsnum': wordnum})
+                ret['msg2'] = "用户识字量导入成功"
 
         except Exception as e:
             pass
@@ -309,7 +316,6 @@ class BookRecommendView(APIView):
         except Exception as e:
             pass
         return HttpResponse(ret)
-
 
 class TestView(APIView):
 
