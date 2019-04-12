@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from api import models, serializers
 import json
-
+from urllib.request import Request, urlopen
 
 def md5(user):
     #token的hash
@@ -61,6 +61,7 @@ class RegView(APIView):
                 obj = models.UserInfo(username = user, password = pwd, phone = phone,
                                       mail = mail, sex = sex, age = age)
                 obj.save()
+                models.UserWordsNum.objects.update_or_create(user=obj, defaults={'wordsnum': 0})
                 ret['msg'] = "用户注册成功"
 
         except Exception as e:
@@ -69,7 +70,7 @@ class RegView(APIView):
 
 class UserInfoView(APIView):
     #用于用户信息查找
-    authentication_classes = []
+    #authentication_classes = []
     def get(self, request, *args, **kwargs):
         # ret = {'code':1001, 'msg':None, 'data': None}
         try:
@@ -118,7 +119,7 @@ class UserEditView(APIView):
 
 class ModifyPasswordView(APIView):
     #用于用户信息编辑
-    authentication_classes = []
+    #authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -308,3 +309,35 @@ class BookRecommendView(APIView):
         except Exception as e:
             pass
         return HttpResponse(ret)
+
+
+class TestView(APIView):
+
+    authentication_classes = [ ]
+    def get(self, request, *args, **kwargs):
+        ret = {'code':1000, 'msg':None,'token':None}
+        try:
+            # 豆瓣网站获取数据Api
+            url = 'https://api.douban.com/v2/book/isbn/9787506394864?apikey=0b2bdeda43b5688921839c8ecb20399b'
+            # 包装头部
+            firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
+            # 构建请求
+            request = Request(url, headers=firefox_headers)
+            html = urlopen(request)
+            # 获取数据
+            data = html.read()
+            # 转换成JSON
+            data_json = json.loads(data)
+            # print(data_json)
+            print('书名',data_json['title'])
+            print('作者',data_json['author'][0])
+            print('ISBN',data_json['isbn13'])
+            print('出版社',data_json['publisher'])
+            print('简介',data_json['summary'])
+            print('图片',data_json['images'])
+            # datas = json.dumps(data,ensure_ascii=False)
+
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)

@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from api import views
 
-urlpatterns = [ 
+urlpatterns = [
+    path('api/test/', views.TestView.as_view()),
     path('admin/', admin.site.urls),
     #对usr的url：
     path('api/auth/', views.AuthView.as_view()),
