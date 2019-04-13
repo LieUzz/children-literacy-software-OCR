@@ -321,34 +321,50 @@ class TestView(APIView):
     def get(self, request, *args, **kwargs):
         ret = {'code':1000, 'msg':None,'token':None}
         try:
-            isbn = request._request.GET.get('isbn')
+            # isbn = request._request.GET.get('isbn')
             # 豆瓣网站获取数据Api
-            url = 'https://api.douban.com/v2/book/isbn/'+isbn+'?apikey=0b2bdeda43b5688921839c8ecb20399b'
-            # 包装头部
-            firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
-            # 构建请求
-            request = Request(url, headers=firefox_headers)
-            html = urlopen(request)
-            # 获取数据
-            data = html.read()
-            # 转换成JSON
-            data_json = json.loads(data)
-            # print(data_json)
-            title = data_json['title']
-            author = data_json['author'][0]
-            isbn13 = data_json['isbn13']
-            publisher = data_json['publisher']
-            summary = data_json['summary']
-            images = data_json['images']
-            print('书名',title)
-            print('作者',author)
-            print('ISBN',isbn13)
-            print('出版社',publisher)
-            print('简介',summary)
-            print('图片',images)
+            obj_id = models.RecommendBook.objects.filter(id=1).first()
+            i = 1
+            while obj_id:
+                i = i + 1
+                obj_id = models.RecommendBook.objects.filter(id = i).first()
+                isbn = obj_id.isbn
+                url = 'https://api.douban.com/v2/book/isbn/'+isbn+'?apikey=0b2bdeda43b5688921839c8ecb20399b'
+                # 包装头部
+                firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
+                # 构建请求
+                request = Request(url, headers=firefox_headers)
+                html = urlopen(request)
+                # 获取数据
+                data = html.read()
+                # 转换成JSON
+                data_json = json.loads(data)
+                # print(data_json)
+                title = data_json['title']
+            # author = data_json['author'][0]
+            # isbn13 = data_json['isbn13']
+            # publisher = data_json['publisher']
+            # summary = data_json['summary']
+                simage = data_json['images']['small']
+                mimage = data_json['images']['medium']
+                limage = data_json['images']['large']
+                print('书名',title)
+                obj_id.simage = simage
+                obj_id.mimage = mimage
+                obj_id.limage = limage
+                obj_id.save()
+            # print('作者',author)
+            # print('ISBN',isbn13)
+            # print('出版社',publisher)
+            # print('简介',summary)
+            # print('图片',simage)
+            # print('图片', mimage)
+            # print('图片', limage)
             # datas = json.dumps(data,ensure_ascii=False)
-            models.RecommendBook.objects.create(title= title,author=author,isbn=isbn13,recommendrank=6,
-                                                publisher=publisher,summary=summary,image=images)
+            obj = models.RecommendBook.objects.filter(id=1).first()
+
+            # models.RecommendBook.objects.create(title= title,author=author,isbn=isbn13,recommendrank=6,
+            #                                     publisher=publisher,summary=summary,image=images)
             # obj.title = title
             # obj.author = author
             # obj.isbn = isbn13
@@ -356,7 +372,7 @@ class TestView(APIView):
             # obj.summary = summary
             # obj.image = images
             # obj.save()
-            ret['msg']='创建数据成功'
+            ret['msg']='查找数据成功'
 
 
         except Exception as e:
