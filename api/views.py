@@ -37,6 +37,17 @@ class AuthView(APIView):
                 ret['msg'] = "用户登录成功"
                 ret['token'] = token
 
+                #创建用户推荐书籍
+                day = date.today().day
+                day = int(day)
+                print(obj.id)
+                time_obj = models.TimeGap.objects.filter(user_id=obj.id).first()
+                print(time_obj)
+                if not time_obj:
+                    models.TimeGap.objects.create(user=obj,lasttime = day, one = 1, two = 2, three=3, four =4,five = 5, six= 6,seven= 7,eight= 8,
+                                                                      nine= 9, ten= 10)
+
+
         except Exception as e:
             pass
         return JsonResponse(ret)

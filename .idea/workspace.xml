@@ -48,12 +48,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="319" column="18" selection-start-line="319" selection-start-column="18" selection-end-line="319" selection-end-column="18" />
+            <state relative-caret-position="290">
+              <caret line="46" column="78" selection-start-line="46" selection-start-column="70" selection-end-line="46" selection-end-column="78" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#266#460#0" />
-                <element signature="e#491#1304#0" />
                 <element signature="e#1334#2389#0" />
                 <element signature="e#2424#3219#0" />
                 <element signature="e#3254#4209#0" />
@@ -71,6 +70,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_usertoken">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_timegap">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bishe/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="263">
@@ -78,15 +95,6 @@
               <folding>
                 <element signature="e#630#662#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_userwordsnum">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -252,12 +260,12 @@
       <workItem from="1554371048388" duration="9716000" />
       <workItem from="1554392097321" duration="22919000" />
       <workItem from="1554954868063" duration="21303000" />
-      <workItem from="1555085062700" duration="24271000" />
+      <workItem from="1555085062700" duration="25366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78424000" />
+    <option name="totallyTimeSpent" value="79519000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -338,13 +346,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_usertoken">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/utils/auth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -385,20 +386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_userinfo">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_timegap">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bishe/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -416,14 +403,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_userinfo">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_usertoken">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_timegap">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="319" column="18" selection-start-line="319" selection-start-column="18" selection-end-line="319" selection-end-column="18" />
+        <state relative-caret-position="290">
+          <caret line="46" column="78" selection-start-line="46" selection-start-column="70" selection-end-line="46" selection-end-column="78" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#266#460#0" />
-            <element signature="e#491#1304#0" />
             <element signature="e#1334#2389#0" />
             <element signature="e#2424#3219#0" />
             <element signature="e#3254#4209#0" />
