@@ -1,5 +1,5 @@
 from random import sample
-
+from datetime import *
 from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
 from rest_framework.views import APIView
@@ -116,7 +116,7 @@ class UserEditView(APIView):
         return JsonResponse(ret)
 
 class ModifyPasswordView(APIView):
-    #用于用户信息编辑
+    #用于用户修改密码
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
@@ -315,6 +315,67 @@ class BookRecommendView(APIView):
             pass
         return HttpResponse(ret)
 
+class DouBanBookView(APIView):
+
+    # 用于豆瓣每日随机推荐推荐
+    authentication_classes = []
+    def get(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            user = request._request.GET.get('username')
+            print(user)
+            user_obj = models.UserInfo.objects.filter(username=user).first()
+            print(user_obj.id)
+            time_obj = models.TimeGap.objects.filter(user_id=user_obj.id).first()
+            day = date.today().day
+            day = int(day)
+            print(day)
+            daygap = 0
+            if not time_obj:
+                models.TimeGap.objects.update_or_create(user=user_obj, defaults={'lasttime': day,'one':1,'two':2,'three':3,'four':4,
+                                                                                 'five':5,'six':6,'seven':7,'eight':8,'nine':9,'ten':10})
+            else:
+                daygap = day - time_obj.lasttime
+            print(daygap)
+            if daygap != 0:
+                rand = sample(range(1, 884), 10)
+                time_obj.one = rand[0]
+                time_obj.two = rand[1]
+                time_obj.three = rand[2]
+                time_obj.four = rand[3]
+                time_obj.five = rand[4]
+                time_obj.six = rand[5]
+                time_obj.seven = rand[6]
+                time_obj.eight = rand[7]
+                time_obj.nine = rand[8]
+                time_obj.ten = rand[9]
+                time_obj.save()
+            time_obj.lasttime = day
+            time_obj.save()
+            print(time_obj.one)
+            books = [0,0,0,0,0,
+                     0,0,0,0,0]
+            books[0] = time_obj.one
+            books[1] = time_obj.two
+            books[2] = time_obj.three
+            books[3] = time_obj.four
+            books[4] = time_obj.five
+            books[5] = time_obj.six
+            books[6] = time_obj.seven
+            books[7] = time_obj.eight
+            books[8] = time_obj.nine
+            books[9] = time_obj.ten
+
+            print(books)
+            book_obj = models.DouBanBook.objects.filter(id__in=books)
+            ser1 = serializers.DouBanBookSerializer(instance=book_obj, many=True)
+            ret = json.dumps(ser1.data, ensure_ascii=False)
+            ret['msg'] = 'success'
+
+        except Exception as e:
+            pass
+        return HttpResponse(ret)
+
 class TestView(APIView):
 
     authentication_classes = []
@@ -323,13 +384,15 @@ class TestView(APIView):
         try:
             # isbn = request._request.GET.get('isbn')
             # 豆瓣网站获取数据Api
-            obj_id = models.RecommendBook.objects.filter(id=1).first()
-            i = 1
-            while obj_id:
-                i = i + 1
-                obj_id = models.RecommendBook.objects.filter(id = i).first()
-                isbn = obj_id.isbn
-                url = 'https://api.douban.com/v2/book/isbn/'+isbn+'?apikey=0b2bdeda43b5688921839c8ecb20399b'
+            #431 / 675 /
+            #131 /174/220/319/337/--431/519/647/797
+                flag = 695
+            # while flag < 131:
+                print(flag)
+                obj_id = models.DouBanBook.objects.filter(id = flag).first()
+                bookid = obj_id.bookid
+                print(bookid)
+                url = 'https://api.douban.com/v2/book/'+str(bookid)+'?apikey=0b2bdeda43b5688921839c8ecb20399b'
                 # 包装头部
                 firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
                 # 构建请求
@@ -341,18 +404,28 @@ class TestView(APIView):
                 data_json = json.loads(data)
                 # print(data_json)
                 title = data_json['title']
-            # author = data_json['author'][0]
-            # isbn13 = data_json['isbn13']
-            # publisher = data_json['publisher']
-            # summary = data_json['summary']
+                print(title)
+                author = data_json['author'][0]
+                # author = '无'
+                isbn13 = data_json['isbn13']
+                # print(isbn13)
+                publisher = data_json['publisher']
+                # print(publisher)
+                summary = data_json['summary']
                 simage = data_json['images']['small']
                 mimage = data_json['images']['medium']
                 limage = data_json['images']['large']
                 print('书名',title)
+                obj_id.title = title
+                obj_id.author = author
+                obj_id.isbn = isbn13
+                obj_id.publisher = publisher #431/675/695
+                obj_id.summary = summary
                 obj_id.simage = simage
                 obj_id.mimage = mimage
                 obj_id.limage = limage
                 obj_id.save()
+                flag = flag + 1
             # print('作者',author)
             # print('ISBN',isbn13)
             # print('出版社',publisher)
@@ -361,7 +434,7 @@ class TestView(APIView):
             # print('图片', mimage)
             # print('图片', limage)
             # datas = json.dumps(data,ensure_ascii=False)
-            obj = models.RecommendBook.objects.filter(id=1).first()
+                obj = models.RecommendBook.objects.filter(id=1).first()
 
             # models.RecommendBook.objects.create(title= title,author=author,isbn=isbn13,recommendrank=6,
             #                                     publisher=publisher,summary=summary,image=images)
@@ -372,9 +445,10 @@ class TestView(APIView):
             # obj.summary = summary
             # obj.image = images
             # obj.save()
-            ret['msg']='查找数据成功'
+                ret['msg']='查找数据成功'
 
 
         except Exception as e:
             pass
         return JsonResponse(ret)
+

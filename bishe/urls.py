@@ -34,4 +34,5 @@ urlpatterns = [
     path('api/wordstest/f2/', views.WordsTestTwoView.as_view()),
     #对书籍的url
     path('api/bookrecommend/', views.BookRecommendView.as_view()),
+    path('api/doubanbook/', views.DouBanBookView.as_view()),
 ]

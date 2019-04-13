@@ -40,4 +40,33 @@ class RecommendBook(models.Model):
     limage = models.CharField(max_length=128, default='')
     recommendrank = models.IntegerField(max_length=16, default=0)
 
+class DouBanBook(models.Model):
+    bookid = models.IntegerField(max_length=32)
+    rating = models.FloatField(max_length=16,default=0)
+    votes = models.IntegerField(max_length=16, default=0)
+    title = models.CharField(max_length=64,default='')
+    author = models.CharField(max_length=64,default='')
+    publisher = models.CharField(max_length=64, default='')
+    isbn = models.CharField(max_length=64, default='')
+    summary = models.CharField(max_length=3840, default='')
+    simage = models.CharField(max_length=128, default='')
+    mimage = models.CharField(max_length=128, default='')
+    limage = models.CharField(max_length=128, default='')
+
+class TimeGap(models.Model):
+    user = models.OneToOneField(UserInfo, on_delete=models.CASCADE)
+    lasttime = models.IntegerField(max_length=16, default=0)
+    one = models.IntegerField(max_length=16, default=0)
+    two = models.IntegerField(max_length=16, default=0)
+    three = models.IntegerField(max_length=16, default=0)
+    four = models.IntegerField(max_length=16, default=0)
+    five = models.IntegerField(max_length=16, default=0)
+    six = models.IntegerField(max_length=16, default=0)
+    seven = models.IntegerField(max_length=16, default=0)
+    eight = models.IntegerField(max_length=16, default=0)
+    nine = models.IntegerField(max_length=16, default=0)
+    ten = models.IntegerField(max_length=16, default=0)
+
+
+
 

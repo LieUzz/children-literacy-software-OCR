@@ -21,3 +21,9 @@ class BookRecommendSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.RecommendBook
         fields = ['title', 'author', 'publisher', 'isbn', 'summary', 'simage', 'mimage', 'limage',]
+
+class DouBanBookSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.DouBanBook
+        fields = ['title', 'rating', 'votes', 'author', 'publisher',  'summary', 'simage', 'mimage', 'limage',]
