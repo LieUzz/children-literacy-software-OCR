@@ -1,11 +1,15 @@
 from random import sample
 from datetime import *
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from api import models, serializers
 import json
 from urllib.request import Request, urlopen
+import urllib.parse
+import urllib
+from api.utils.msg import sendsms
+
 
 def md5(user):
     #token的hash
@@ -16,6 +20,7 @@ def md5(user):
     m.update(bytes(ctime,encoding='utf-8'))
     return m.hexdigest()
 
+#用户相关
 class AuthView(APIView):
     #用于用户的登录认证
 
@@ -153,22 +158,25 @@ class FogetPasswordView(APIView):
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
-            username = request._request.POST.get('username')
-            pwd = request._request.POST.get('password')
-            user_obj = models.UserInfo.objects.filter(username=username).first()
-            if not user_obj:
-                ret['code'] = 2000
-                ret['msg'] = '该用户不存在'
-            else:
-                print(user_obj.username)
-                user_obj.password = pwd
-                user_obj.save()
-                ret['msg'] = '用户密码修改成功'
+            appkey = 'ea6cbc41a00baf9a77da24c28492d1e6'  # 您申请的短信服务appkey
+            mobile = '17376566754'  # 短信接受者的手机号码
+            tpl_id = '151711'  # 申请的短信模板ID,根据实际情况修改
+            tpl_value = '#code#=567890&#company#=OCR'  # 短信模板变量,根据实际情况修改
+
+            # username = request._request.POST.get('username')
+            # user_obj = models.UserInfo.objects.filter(username=username).first()
+
+            sendsms(appkey, mobile, tpl_id, tpl_value)
+            ret['code'] = 1000
+            ret['msg'] = '发送短信成功'
 
         except Exception as e:
             pass
         return JsonResponse(ret)
 
+
+
+#词汇量相关
 class UserWordsNumView(APIView):
     #用于用户的识字量的导入
     def post(self, request, *args, **kwargs):
@@ -282,6 +290,7 @@ class WordsTestView(APIView):
             pass
         return JsonResponse(ret)
 
+#书籍相关
 class BookRecommendView(APIView):
 
     # 用于用户书籍推荐
@@ -386,6 +395,117 @@ class DouBanBookView(APIView):
             pass
         return HttpResponse(ret)
 
+#汉字识别相关
+
+class WordInfoView(APIView):
+
+    # 用于用户查询词语
+    def get(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            word = request._request.GET.get('word')
+            # print(word)
+            print(urllib.parse.quote('可'))
+            word = urllib.parse.quote('可')
+
+            #聚合数据的新华字典调用
+            url = 'http://v.juhe.cn/xhzd/query?key=b58d89a05c7170a092bcc2ef8feb5c3b&word=' + str(word)
+            # 包装头部
+            firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
+            # 构建请求
+            request = Request(url, headers=firefox_headers)
+            html = urlopen(request)
+            # 获取数据
+            data = html.read()
+            # 转换成JSON
+            data_json = json.loads(data)
+            # print(data_json)
+            zi = data_json['result']['zi']
+            print(zi)
+            pinyin = data_json['result']['pinyin']
+            print(pinyin)
+            bihua = data_json['result']['bihua']
+            print(bihua)
+            yisi1 = data_json['result']['jijie'][2]
+            yisi2 = data_json['result']['jijie'][3]
+            yisi3 = data_json['result']['jijie'][4]
+            print(yisi1)
+            print(yisi2)
+            print(yisi3)
+
+            # ret['msg'] = '用户查找成功'
+
+        except Exception as e:
+            pass
+        return HttpResponse(ret)
+
+class WordHistoryView(APIView):
+
+    # 用于用户查过的词语的获取
+    def get(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            username = request._request.GET.get('username')
+            # word = request._request.GET.get('word')
+            # print(word)
+            # word = urllib.parse.quote(word)
+            print(username)
+            user_obj = models.UserInfo.objects.filter(username=username).first()
+            print(user_obj.id)
+            wordhis = models.UserWordHistory.objects.filter(user_id=user_obj.id)
+            ser = serializers.WordHistorySerializer(instance=wordhis, many=True)
+            ret = json.dumps(ser.data, ensure_ascii=False)
+            print(wordhis)
+
+
+            # ret['msg'] = '用户查找成功'
+
+        except Exception as e:
+            pass
+        return HttpResponse(ret)
+
+    # 用于用户查过的词语进行历史添加
+    def post(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            username = request._request.POST.get('username')
+            word = request._request.POST.get('word')
+            print(word)
+            #对汉字进行urlcode编码
+            word = urllib.parse.quote(word)
+            print(username)
+            user_obj = models.UserInfo.objects.filter(username=username).first()
+            print(user_obj.id)
+            wordexit = models.UserWordHistory.objects.filter(word=word).first()
+            if wordexit:
+                models.UserWordHistory.objects.filter(word=word).delete()
+                models.UserWordHistory.objects.create(user_id=user_obj.id, word=word)
+                ret['msg'] = '该字已存在用户的历史记录，用户历史记录更新成功'
+            else:
+                models.UserWordHistory.objects.create(user_id=user_obj.id,word=word)
+                ret['msg'] = '用户历史记录导入成功'
+            # print(wordhis)
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
+
+    # 用于用户历史记录的删除
+    def delete(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            username = request._request.DELETE.get('username')
+            print(username)
+            user_obj = models.UserInfo.objects.filter(username=username).first()
+            print(user_obj.id)
+            wordhis = models.UserWordHistory.objects.filter(user_id=user_obj.id).delete()
+            print(wordhis)
+            ret['msg'] = '用户历史记录删除成功'
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
+
 class TestView(APIView):
 
     authentication_classes = []
@@ -461,4 +581,7 @@ class TestView(APIView):
         except Exception as e:
             pass
         return JsonResponse(ret)
+
+
+
 

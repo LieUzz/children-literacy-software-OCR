@@ -27,3 +27,9 @@ class DouBanBookSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.DouBanBook
         fields = ['title', 'rating', 'votes', 'author', 'publisher',  'summary', 'simage', 'mimage', 'limage',]
+
+class WordHistorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.UserWordHistory
+        fields = ['word']

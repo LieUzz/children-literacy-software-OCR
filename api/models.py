@@ -67,6 +67,10 @@ class TimeGap(models.Model):
     nine = models.IntegerField(max_length=16, default=0)
     ten = models.IntegerField(max_length=16, default=0)
 
+class UserWordHistory(models.Model):
+    user = models.ForeignKey(UserInfo, on_delete = models.DO_NOTHING)
+    word = models.CharField(max_length = 16)
+
 
 
 
