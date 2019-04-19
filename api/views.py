@@ -338,6 +338,7 @@ class BookRecommendView(APIView):
 class DouBanBookView(APIView):
 
     # 用于豆瓣每日随机推荐推荐
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
