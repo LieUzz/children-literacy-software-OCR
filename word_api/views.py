@@ -2,8 +2,8 @@ from random import sample
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from rest_framework.views import APIView
-from word_api import models, serializers
-from book_api import models
+from . import models, serializers
+import book_api.models
 import json
 
 
@@ -120,15 +120,4 @@ class WordsTestView(APIView):
             pass
         return JsonResponse(ret)
 
-class TestView(APIView):
-    # 用于词汇量测试结果
-    def get(self, request, *args, **kwargs):
-        ret = {'code':1001, 'msg':None}
-        try:
-            book = models.FavoriteBook.objects.all()
-            print(book[0].isbn)
-
-        except Exception as e:
-            pass
-        return JsonResponse(ret)
 

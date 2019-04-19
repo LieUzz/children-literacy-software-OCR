@@ -2,8 +2,8 @@ from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from book_api import models, serializers
-from usr_api import models
-from word_api import models
+import usr_api.models
+import word_api.models
 import json
 from urllib.request import Request, urlopen
 import api.models
@@ -18,9 +18,9 @@ class BookRankView(APIView):
         try:
             username = request._request.GET.get('username')
             print(username)
-            user_obj = models.UserInfo.objects.filter(username=username).first()
+            user_obj = usr_api.models.UserInfo.objects.filter(username=username).first()
             print(user_obj.id)
-            userwordsnum = models.UserWordsNum.objects.filter(user_id=user_obj.id).first().wordsnum
+            userwordsnum = word_api.models.UserWordsNum.objects.filter(user_id=user_obj.id).first().wordsnum
             print(userwordsnum)
 
             rank = 0
@@ -59,7 +59,7 @@ class BookRecommendView(APIView):
         try:
             rank = request._request.GET.get('rank')
             print(rank)
-            books = api.models.RecommendBook.objects.filter(recommendrank=int(rank))
+            books = models.RecommendBook.objects.filter(recommendrank=int(rank))
             print(123)
             ser = serializers.BookRecommendSerializer(instance=books, many=True)
             ret = json.dumps(ser.data, ensure_ascii=False)
@@ -112,13 +112,13 @@ class FavoriteView(APIView):
         try:
             username = request._request.GET.get('username')
             print(username)
-            obj = models.UserInfo.objects.filter(username=username).first()
+            obj = usr_api.models.UserInfo.objects.filter(username=username).first()
             if not obj:
                 ret['code'] = 2000
                 ret['msg'] = '用户不存在'
                 return JsonResponse(ret)
             print(obj.id)
-            isbns = api.models.FavoriteBook.objects.all()
+            isbns = models.FavoriteBook.objects.filter(user_id=obj.id)
             print(isbns)
             ser = serializers.FavoriteBookSerializer(instance=isbns, many=True)
             ret = json.dumps(ser.data, ensure_ascii=False)
@@ -141,7 +141,7 @@ class FavoriteView(APIView):
                 ret['msg'] = '用户不存在'
                 return JsonResponse(ret)
             print(obj.id)
-            book_exist = api.models.FavoriteBook.objects.filter(isbn=isbn).first()
+            book_exist = models.FavoriteBook.objects.filter(isbn=isbn).first()
             if book_exist:
                 ret['msg'] = '该书籍已存在'
                 ret['code'] = 2000
@@ -169,7 +169,7 @@ class FavoriteView(APIView):
                 limage = data_json['images']['large']
 
 
-                api.models.FavoriteBook.objects.create(user_id=obj.id,title=title,author=author,publisher=publisher,
+                models.FavoriteBook.objects.create(user_id=obj.id,title=title,author=author,publisher=publisher,
                                                        isbn=isbn,summary=summary,simage=simage,mimage=mimage,limage=limage)
                 print(123)
                 ret['msg'] = '书籍已导入用户书架'
@@ -193,7 +193,8 @@ class FavoriteDelView(APIView):
                 ret['msg'] = '用户不存在'
                 return JsonResponse(ret)
             print(obj.id)
-            book_exist = api.models.FavoriteBook.objects.filter(isbn=isbn).first()
+            book_exist = models.FavoriteBook.objects.filter(user_id=obj.id, isbn=isbn).first()
+            print(book_exist)
             if not book_exist:
                 ret['code'] = 2000
                 ret['msg'] = '该书籍不存在'

@@ -7,5 +7,4 @@ urlpatterns = [
     path('test/result/', views.WordsTestView.as_view()),              #GET
     path('test/step1/', views.WordsTestOneView.as_view()),        #GET
     path('test/step2/', views.WordsTestTwoView.as_view()),        #GET
-    path('test/test/', views.TestView.as_view()),        #GET
 ]

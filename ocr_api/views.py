@@ -94,7 +94,7 @@ class WordHistoryView(APIView):
             print(word)
             user_obj = models.UserInfo.objects.filter(username=username).first()
             print(user_obj.id)
-            wordexit = models.UserWordHistory.objects.filter(word=word).first()
+            wordexit = models.UserWordHistory.objects.filter(user_id=user_obj.id, word=word).first()
             if wordexit:
                 wordexit.time = datetime.now()
                 wordexit.save()

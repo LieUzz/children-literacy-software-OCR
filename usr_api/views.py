@@ -2,8 +2,8 @@ from random import sample
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from rest_framework.views import APIView
-from usr_api import models, serializers
-from word_api import models
+from . import models, serializers
+import word_api.models
 import json
 from api.utils.msg import sendsms
 
@@ -20,21 +20,25 @@ def md5(user):
 class AuthView(APIView):
     #用于用户的登录认证
 
-    authentication_classes = [ ]
+    authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1000, 'msg':None,'token':None}
         try:
             user = request._request.POST.get('username')
             pwd = request._request.POST.get('password')
+            print(user,pwd)
             obj = models.UserInfo.objects.filter(username = user, password = pwd).first()
+            print(obj)
             if not obj:
                 ret['code']=2000
                 ret['msg'] = "用户名或密码错误"
             else:
                 # 为登录用户创建token
                 token = md5(user)
+                print(token)
                 # 更新或创建
                 models.UserToken.objects.update_or_create(user=obj,defaults={'token':token})
+                print(123)
                 ret['msg'] = "用户登录成功"
                 ret['token'] = token
 
@@ -124,7 +128,7 @@ class RegView(APIView):
                 obj = models.UserInfo(username = user, password = pwd, phone = phone,
                                       mail = mail, sex = sex, age = age)
                 obj.save()
-                models.UserWordsNum.objects.update_or_create(user=obj, defaults={'wordsnum': 0})
+                word_api.models.UserWordsNum.objects.update_or_create(user=obj, defaults={'wordsnum': 0})
                 ret['msg'] = "注册成功"
 
         except Exception as e:
@@ -138,6 +142,7 @@ class UserInfoView(APIView):
         try:
             username = request._request.GET.get('username')
             user_obj = models.UserInfo.objects.filter(username=username).first()
+            ret = None
             if not user_obj:
                 user = models.UserInfo.objects.all()
                 ser = serializers.UserSerializer(instance=user, many=True)
