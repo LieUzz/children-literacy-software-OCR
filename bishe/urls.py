@@ -14,7 +14,7 @@ Including another URLconfi
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from api import views
 
 urlpatterns = [
@@ -39,4 +39,11 @@ urlpatterns = [
     path('api/wordinfo/', views.WordInfoView.as_view()),                #GET
     path('api/wordhistory/', views.WordHistoryView.as_view()),          #GET/POST
     path('api/wordhistory/del', views.WordHistoryView.as_view()),       #POST
+
+    path('api/usr/', include('usr_api.urls')),
+    path('api/word/', include('word_api.urls')),
+    path('api/book/', include('book_api.urls')),
+    path('api/ocr/', include('ocr_api.urls')),
+
+
 ]
