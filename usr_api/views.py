@@ -218,7 +218,7 @@ class FogetPasswordView(APIView):
         try:
             phone = request._request.GET.get('phone')
             user_obj = models.UserInfo.objects.filter(phone=phone).first()
-
+            print(user_obj.username)
             #产生随机码
             msg_num = sample(range(100000, 999999), 1)
             print(msg_num[0])
@@ -233,9 +233,10 @@ class FogetPasswordView(APIView):
                 ret['msg'] = '该手机未注册，用户不存在'
             else:
                 print(user_obj.phone)
-                models.PhoneCode.objects.update_or_create(user=user_obj, defaults={'code': msg_num[0]})
+                models.PhoneCode.objects.update_or_create(phone=user_obj.phone, defaults={'code': msg_num[0]})
                 ret['msg'] = '用户手机查找成功，已发送短信'
                 sendsms(appkey, mobile, tpl_id, tpl_value)
+
             # ret['code'] = 1000
             # ret['msg'] = '发送短信成功'
 
@@ -253,7 +254,7 @@ class FogetPasswordView(APIView):
                 ret['code'] = 2000
                 ret['msg'] = '该用户不存在'
             else:
-                code_db = models.PhoneCode.objects.filter(user=user_obj).first().code
+                code_db = models.PhoneCode.objects.filter(phone=user_obj.phone).first().code
                 if int(code) == int(code_db):
                     ret['msg'] = '用户验证码正确'
                 else:
