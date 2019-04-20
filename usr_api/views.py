@@ -269,12 +269,13 @@ class ChangePasswordView(APIView):
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
-            username = request._request.POST.get('username')
+            phone = request._request.POST.get('phone')
             pwd = request._request.POST.get('password')
-            user_obj = models.UserInfo.objects.filter(username=username).first()
+            user_obj = models.UserInfo.objects.filter(phone=phone).first()
+            print(user_obj.username)
             if not user_obj:
                 ret['code'] = 2000
-                ret['msg'] = '该用户不存在'
+                ret['msg'] = '该手机未注册'
             else:
                 print(user_obj.username)
                 user_obj.password = pwd
