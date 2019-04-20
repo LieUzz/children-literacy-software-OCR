@@ -267,6 +267,7 @@ class FogetPasswordView(APIView):
 
 class ChangePasswordView(APIView):
     #用于用户修改密码
+    authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
