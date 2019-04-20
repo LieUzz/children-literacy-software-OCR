@@ -98,7 +98,7 @@ class WordsTestTwoView(APIView):
 class WordsTestView(APIView):
     # 用于词汇量测试结果
     def get(self, request, *args, **kwargs):
-        ret = {'code':1001, 'msg':None, 'wordnum':None}
+        ret = {'code':1001, 'msg':None,'msg2':None, 'wordnum':None}
         try:
             user = request._request.GET.get('username')
             obj = models.UserInfo.objects.filter(username=user).first()
@@ -113,8 +113,8 @@ class WordsTestView(APIView):
             else:
                 ret['msg'] = '用户词汇量测试结果成功'
                 ret['wordnum'] = wordnum
-                # models.UserWordsNum.objects.update_or_create(user=obj, defaults={'wordsnum': wordnum})
-                # ret['msg2'] = "用户识字量导入成功"
+                models.UserWordsNum.objects.update_or_create(user=obj, defaults={'wordsnum': wordnum})
+                ret['msg2'] = "用户识字量导入成功"
 
         except Exception as e:
             pass
