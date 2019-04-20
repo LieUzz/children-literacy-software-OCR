@@ -44,6 +44,7 @@ urlpatterns = [
     path('api/word/', include('word_api.urls')),
     path('api/book/', include('book_api.urls')),
     path('api/ocr/', include('ocr_api.urls')),
+    path('tool/', include('tool.urls')),
 
 
 ]

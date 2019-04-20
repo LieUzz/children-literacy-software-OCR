@@ -1,4 +1,6 @@
+from random import sample
 from django.shortcuts import HttpResponse
+from datetime import *
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from book_api import models, serializers
@@ -6,7 +8,6 @@ import usr_api.models
 import word_api.models
 import json
 from urllib.request import Request, urlopen
-import api.models
 
 
 #书籍相关
@@ -206,6 +207,70 @@ class FavoriteDelView(APIView):
         except Exception as e:
             pass
         return JsonResponse(ret)
+
+class KidsBookView(APIView):
+
+    # 用于用户每日推荐
+    def get(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            user = request._request.GET.get('username')
+            print(user)
+            user_obj = models.UserInfo.objects.filter(username=user).first()
+            print(user_obj.id)
+            time_obj = models.TimeGap.objects.filter(user_id=user_obj.id).first()
+            day = date.today().day
+            day = int(day)
+            print(day)
+            daygap = 0
+            if not time_obj:
+                models.TimeGap.objects.update_or_create(user=user_obj,
+                                                        defaults={'lasttime': day, 'one': 1, 'two': 2, 'three': 3,
+                                                                  'four': 4,
+                                                                  'five': 5, 'six': 6, 'seven': 7, 'eight': 8,
+                                                                  'nine': 9, 'ten': 10})
+            else:
+                daygap = day - time_obj.lasttime
+            print(daygap)
+            if daygap != 0:
+                rand = sample(range(1, 292), 10)
+                time_obj.one = rand[0]
+                time_obj.two = rand[1]
+                time_obj.three = rand[2]
+                time_obj.four = rand[3]
+                time_obj.five = rand[4]
+                time_obj.six = rand[5]
+                time_obj.seven = rand[6]
+                time_obj.eight = rand[7]
+                time_obj.nine = rand[8]
+                time_obj.ten = rand[9]
+                time_obj.save()
+            time_obj.lasttime = day
+            time_obj.save()
+            print(time_obj.one)
+            books = [0, 0, 0, 0, 0,
+                     0, 0, 0, 0, 0]
+            books[0] = time_obj.one
+            books[1] = time_obj.two
+            books[2] = time_obj.three
+            books[3] = time_obj.four
+            books[4] = time_obj.five
+            books[5] = time_obj.six
+            books[6] = time_obj.seven
+            books[7] = time_obj.eight
+            books[8] = time_obj.nine
+            books[9] = time_obj.ten
+
+            print(books)
+            book_obj = models.KidsBook.objects.filter(id__in=books)
+            ser1 = serializers.KidsBookSerializer(instance=book_obj, many=True)
+            ret = json.dumps(ser1.data, ensure_ascii=False)
+            ret['msg'] = 'success'
+
+        except Exception as e:
+            pass
+        return HttpResponse(ret)
+
 
 # class TestView(APIView):
 #
