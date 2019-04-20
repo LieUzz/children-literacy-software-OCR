@@ -10,4 +10,5 @@ urlpatterns = [
     path('info/edit/',views.UserEditView.as_view()),
     path('pwd/modification/',views.ModifyPasswordView.as_view()),
     path('pwd/lost/',views.FogetPasswordView.as_view()),
+    path('pwd/lost/change/',views.ChangePasswordView.as_view()),
 ]

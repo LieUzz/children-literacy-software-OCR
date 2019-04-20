@@ -263,3 +263,24 @@ class FogetPasswordView(APIView):
         except Exception as e:
             pass
         return JsonResponse(ret)
+
+class ChangePasswordView(APIView):
+    #用于用户修改密码
+    def post(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            username = request._request.POST.get('username')
+            pwd = request._request.POST.get('password')
+            user_obj = models.UserInfo.objects.filter(username=username).first()
+            if not user_obj:
+                ret['code'] = 2000
+                ret['msg'] = '该用户不存在'
+            else:
+                print(user_obj.username)
+                user_obj.password = pwd
+                user_obj.save()
+                ret['msg'] = '用户密码修改成功'
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
