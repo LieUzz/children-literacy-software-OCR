@@ -189,16 +189,22 @@ class ModifyPasswordView(APIView):
         ret = {'code':1001, 'msg':None}
         try:
             username = request._request.POST.get('username')
+            old_pwd = request._request.POST.get('oldpassword')
             pwd = request._request.POST.get('password')
             user_obj = models.UserInfo.objects.filter(username=username).first()
             if not user_obj:
                 ret['code'] = 2000
                 ret['msg'] = '该用户不存在'
             else:
-                print(user_obj.username)
-                user_obj.password = pwd
-                user_obj.save()
-                ret['msg'] = '用户密码修改成功'
+                print(old_pwd,user_obj.password)
+                if int(old_pwd)==int(user_obj.password):
+                    print(user_obj.username)
+                    user_obj.password = pwd
+                    user_obj.save()
+                    ret['msg'] = '用户密码修改成功'
+                else:
+                    ret['code'] = 2000
+                    ret['msg'] = '用户原密码错误'
 
         except Exception as e:
             pass
