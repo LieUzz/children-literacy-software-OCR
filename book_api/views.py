@@ -61,7 +61,7 @@ class BookRecommendView(APIView):
         try:
             rank = request._request.GET.get('rank')
             print(rank)
-            books = models.RecommendBook.objects.filter(recommendrank=int(rank))
+            books = models.RecommendBook.objects.filter(recommendrank=str(rank))
             print(123)
             ser = serializers.BookRecommendSerializer(instance=books, many=True)
             ret = json.dumps(ser.data, ensure_ascii=False)
