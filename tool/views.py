@@ -99,9 +99,9 @@ class BookView(APIView):
         ret = {'code': 1000, 'msg': None}
 
         try:
-            book_id = models.KidsBook.objects.all()
-            for i in range(327,330):
-                url = 'https://api.douban.com/v2/book/' + str(book_id[i].isbn) + '?apikey=0b2bdeda43b5688921839c8ecb20399b'
+            book_id = book_api.models.KidsBook.objects.all()
+            for i in range(293):
+                url = 'https://api.douban.com/v2/book/isbn/' + str(book_id[i].isbn) + '?apikey=0b2bdeda43b5688921839c8ecb20399b'
                 # 包装头部
                 firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
                 # 构建请求
@@ -111,25 +111,32 @@ class BookView(APIView):
                 data = html.read()
                 # 转换成JSON
                 data_json = json.loads(data)
-                # print(data_json)
+                print(data_json)
 
-                title = data_json['title']
-                # print(title)
-                author = data_json['author'][0]
-                # author = '无'
-                isbn13 = data_json['isbn13']
-                # print(isbn13)
-                publisher = data_json['publisher']
-                # print(publisher)
-                summary = data_json['summary']
-                simage = data_json['images']['small']
-                mimage = data_json['images']['medium']
-                limage = data_json['images']['large']
-                print(title,author,isbn13,publisher,summary,simage,mimage,limage)
-                book_api.models.KidsBook.objects.update_or_create(title=title,author=author,isbn=isbn13,
-                                                                  publisher=publisher,summary=summary,simage=simage,
-                                                                  mimage=mimage,limage=limage)
+                votes = data_json['rating']['numRaters']
+                print(votes)
+                rating = data_json['rating']['average']
+                print(rating)
 
+                # title = data_json['title']
+                # # print(title)
+                # author = data_json['author'][0]
+                # # author = '无'
+                # isbn13 = data_json['isbn13']
+                # # print(isbn13)
+                # publisher = data_json['publisher']
+                # # print(publisher)
+                # summary = data_json['summary']
+                # simage = data_json['images']['small']
+                # mimage = data_json['images']['medium']
+                # limage = data_json['images']['large']
+                # print(title,author,isbn13,publisher,summary,simage,mimage,limage)
+                book = book_api.models.KidsBook.objects.filter(isbn=book_id[i].isbn).first()
+                book.rating = rating
+                book.votes = votes
+                book.save()
+
+            ret['msg'] = 'success'
 
             # print('作者',author)
             # print('ISBN',isbn13)

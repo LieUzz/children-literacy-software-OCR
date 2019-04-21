@@ -17,4 +17,4 @@ class KidsBookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.KidsBook
-        fields = ['title', 'author', 'publisher', 'isbn', 'summary', 'simage', 'mimage', 'limage']
+        fields = ['title', 'author', 'votes', 'rating', 'publisher', 'isbn', 'summary', 'simage', 'mimage', 'limage']

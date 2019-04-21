@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    #http://localhost:8000/book/
+    #http://localhost:8000/api/book/
     path('rank/', views.BookRankView.as_view()),
     path('recommend/', views.BookRecommendView.as_view()),
     path('isbn/', views.IsbnView.as_view()),

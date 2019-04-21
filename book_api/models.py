@@ -32,6 +32,8 @@ class KidsBook(models.Model):
     simage = models.CharField(max_length=128, default='')
     mimage = models.CharField(max_length=128, default='')
     limage = models.CharField(max_length=128, default='')
+    rating = models.FloatField(max_length=16, default=0)
+    votes = models.IntegerField(max_length=16, default=0)
 
 class TimeGap(models.Model):
     user = models.OneToOneField(UserInfo, on_delete=models.CASCADE)
