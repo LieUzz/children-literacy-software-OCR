@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61322b10-2ea7-475a-8288-872ba8bcec99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/book_api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,15 +48,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/book_api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="63" column="79" selection-start-line="63" selection-start-column="79" selection-end-line="63" selection-end-column="79" />
+            <state relative-caret-position="-52">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="e#353#1564#0" />
                 <element signature="e#418#1564#0" />
                 <element signature="e#2184#3538#0" />
                 <element signature="e#3574#6426#0" />
                 <element signature="e#6465#7404#0" />
-                <element signature="e#7440#9907#0" />
                 <element signature="e#9910#9936#0" />
               </folding>
             </state>
@@ -282,12 +280,12 @@
       <workItem from="1555085062700" duration="58461000" />
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
-      <workItem from="1555739811413" duration="18808000" />
+      <workItem from="1555739811413" duration="19258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154643000" />
+    <option name="totallyTimeSpent" value="155093000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -300,6 +298,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17453505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -705,15 +704,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/book_api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="63" column="79" selection-start-line="63" selection-start-column="79" selection-end-line="63" selection-end-column="79" />
+        <state relative-caret-position="-52">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#353#1564#0" />
             <element signature="e#418#1564#0" />
             <element signature="e#2184#3538#0" />
             <element signature="e#3574#6426#0" />
             <element signature="e#6465#7404#0" />
-            <element signature="e#7440#9907#0" />
             <element signature="e#9910#9936#0" />
           </folding>
         </state>
