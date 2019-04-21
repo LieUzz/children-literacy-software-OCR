@@ -44,6 +44,7 @@ class BookRankView(APIView):
             if flag==1:
                 ret['msg'] = '用户未检测词汇量'
                 ret['code'] = 2000
+                ret['rank'] = rank
             else:
                 ret['msg'] = '根据用户词汇量测得用户等级'
                 ret['rank'] = rank
