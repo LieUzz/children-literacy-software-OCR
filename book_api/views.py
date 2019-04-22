@@ -211,6 +211,35 @@ class FavoriteDelView(APIView):
             pass
         return JsonResponse(ret)
 
+class FavoriteSearchView(APIView):
+
+    # 用于书架书籍查询
+    def get(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            bookname = request._request.GET.get('bookname')
+            username = request._request.GET.get('username')
+            usr = models.UserInfo.objects.filter(username=username).first()
+            if not usr:
+                ret['code'] = 2001
+                ret['msg'] = '用户不存在'
+                return JsonResponse(ret)
+            print(bookname)
+            obj = models.FavoriteBook.objects.filter(title__contains=bookname,user_id=usr.id)
+            if not obj:
+                ret['code'] = 2000
+                ret['msg'] = '书籍不存在'
+                return JsonResponse(ret)
+            # print(book)
+            ser = serializers.FavoriteBookSerializer(instance=obj, many=True)
+            ret = json.dumps(ser.data, ensure_ascii=False)
+
+            # ret['msg'] = '用户查找成功'
+
+        except Exception as e:
+            pass
+        return HttpResponse(ret)
+
 class KidsBookView(APIView):
 
     # 用于用户每日推荐
@@ -277,11 +306,10 @@ class KidsBookView(APIView):
 class SearchView(APIView):
 
     # 用于书籍查询
-    authentication_classes = []
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         ret = {'code':1001, 'msg':None}
         try:
-            bookname = request._request.POST.get('bookname')
+            bookname = request._request.GET.get('bookname')
             print(bookname)
             obj = models.KidsBook.objects.filter(title__contains=bookname)
             if not obj:
