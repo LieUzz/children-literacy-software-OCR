@@ -8,5 +8,6 @@ urlpatterns = [
     path('isbn/', views.IsbnView.as_view()),
     path('favorite/', views.FavoriteView.as_view()),
     path('favorite/del/', views.FavoriteDelView.as_view()),
-    path('douban/kids/', views.KidsBookView.as_view())
+    path('douban/kids/', views.KidsBookView.as_view()),
+    path('search/',views.SearchView.as_view()),
 ]

@@ -92,6 +92,8 @@ class IsbnView(APIView):
             # 转换成JSON
             data_json = json.loads(data)
             ret['title'] = data_json['title']
+            # if data_json['title'] == '':
+            #     ret['code'] = 2000
             ret['author'] = data_json['author']
             ret['publisher'] = data_json['publisher']
             ret['isbn'] = data_json['isbn13']
@@ -162,7 +164,7 @@ class FavoriteView(APIView):
                 # 转换成JSON
                 data_json = json.loads(data)
                 title = data_json['title']
-                author = data_json['author']
+                author = data_json['author'][0]
                 publisher = data_json['publisher']
                 isbn = data_json['isbn13']
                 summary = data_json['summary']
@@ -267,6 +269,30 @@ class KidsBookView(APIView):
             ser1 = serializers.KidsBookSerializer(instance=book_obj, many=True)
             ret = json.dumps(ser1.data, ensure_ascii=False)
             ret['msg'] = 'success'
+
+        except Exception as e:
+            pass
+        return HttpResponse(ret)
+
+class SearchView(APIView):
+
+    # 用于书籍查询
+    authentication_classes = []
+    def post(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            bookname = request._request.POST.get('bookname')
+            print(bookname)
+            obj = models.KidsBook.objects.filter(title__contains=bookname)
+            if not obj:
+                ret['code'] = 2000
+                ret['msg'] = '书籍不存在'
+                return JsonResponse(ret)
+            # print(book)
+            ser = serializers.KidsBookSerializer(instance=obj, many=True)
+            ret = json.dumps(ser.data, ensure_ascii=False)
+
+            # ret['msg'] = '用户查找成功'
 
         except Exception as e:
             pass
