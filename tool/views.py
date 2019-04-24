@@ -1,25 +1,31 @@
-from django.shortcuts import render
-import xml.etree.ElementTree as ET
 from django.http import JsonResponse
-import json
+from bs4 import BeautifulSoup
 from rest_framework.views import APIView
 from urllib.request import Request, urlopen
 from . import models
+import json
 import urllib.parse
 import urllib
 import re
 import book_api.models
+import word_api.models
+import ocr_api.models
+import api.models
 
 
 def open_url(url):
 
     # 包装头部
-    firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
+    firefox_headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    # print(1)
     # 构建请求
     request = Request(url, headers=firefox_headers)
+    # print(2)
     html = urlopen(request)
+    # print(3)
     # 获取数据
     data = html.read()
+    # print(4)
     return data
 
 
@@ -145,6 +151,234 @@ class BookView(APIView):
             # print('图片',simage)
             # print('图片', mimage)
             # print('图片', limage)
+
+        except Exception as e:
+            pass
+
+        return JsonResponse(ret)
+
+class WordView(APIView):
+    #用于汉字数据库的建立
+    authentication_classes = []
+    def get(self, request, *args, **kwargs):
+        ret = {'code': 1000, 'msg': None}
+
+        try:
+            print(123)
+            # # 获取3000个汉字的zi
+            # word = word_api.models.BaseWords.objects.all()
+            # for i in range(0,2995):
+            #     ocr_api.models.Words.objects.update_or_create(id=word[i].id,zi=word[i].word)
+
+            #获取汉字的笔画数，拼音，意思等
+            word = word_api.models.BaseWords.objects.all()
+            for i in range(100,2995):
+                print(word[i].word)
+                obj = ocr_api.models.Words.objects.filter(zi=word[i].word).first()
+                print(123)
+                wordurl = urllib.parse.quote(word[i].word)
+                print(wordurl)
+                # 聚合数据的新华字典调用
+                    #b58d89a05c7170a092bcc2ef8feb5c3b
+                    #c98072ebc854fe0849d07ee107330560
+                    #
+                url = 'http://v.juhe.cn/xhzd/query?key=c98072ebc854fe0849d07ee107330560&word=' + str(wordurl)
+                # 包装头部
+                firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
+                # 构建请求
+                request = Request(url, headers=firefox_headers)
+                html = urlopen(request)
+                # 获取数据
+                data = html.read()
+                # 转换成JSON
+                data_json = json.loads(data)
+                print(data_json)
+                zi = data_json['result']['zi']
+                print(zi)
+                pinyin = data_json['result']['pinyin']
+                bihua = data_json['result']['bihua']
+                yisi1 = data_json['result']['jijie'][2]
+                yisi2 = data_json['result']['jijie'][3]
+                yisi3 = data_json['result']['jijie'][4]
+                obj.pinyin = pinyin
+                print(pinyin)
+                obj.bihua = bihua
+                print(bihua)
+                obj.yisi1 = yisi1
+                print(yisi1)
+                obj.yisi2 = yisi2
+                print(yisi2)
+                obj.yisi3 = yisi3
+                print(yisi3)
+                obj.save()
+                # ret['word'] = zi
+                # ret['pinyin'] = pinyin
+                # ret['bihua'] = bihua
+                # ret['yisi1'] = yisi1
+                # ret['yisi2'] = yisi2
+                # ret['yisi3'] = yisi3
+
+
+            # # 获取汉字部首
+            # word = word_api.models.BaseWords.objects.all()
+            # for i in range(0,1):
+            #     print(word[i].word)
+            #     obj = ocr_api.models.Words.objects.filter(zi=word[i].word).first()
+            #     bushou =
+
+
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
+
+class BaiDuHanZiView(APIView):
+    #用于正则获取百度汉字详情
+    authentication_classes = []
+    def get(self, request, *args, **kwargs):
+        ret = {'code': 1000, 'msg': None}
+        try:
+            # 新建词汇表
+            # word_pre = api.models.BaseWords.objects.all()
+            # for i in range(2995):
+            #     models.Word.objects.update_or_create(word=word_pre[i].word)
+
+            obj = models.Word.objects.all()
+            # print(len(obj))
+
+            for i in range(len(obj)):
+                print('start')
+                # 去除数据库里的多余字段
+                # yisi1 = obj[i].yisi1.replace('<strong>', '').replace('</strong>', '')
+                # yisi2 = obj[i].yisi2.replace('<strong>', '').replace('</strong>', '')
+                # yisi3 = obj[i].yisi3.replace('<strong>', '').replace('</strong>', '')
+                # obj[i].yisi1 = yisi1
+                # obj[i].yisi2 = yisi2
+                # obj[i].yisi3 = yisi3
+                # obj[i].save()
+
+                # print(i)
+                # print(obj[i].word)
+                # word = obj[i].word
+                # url = 'https://hanyu.baidu.com/s?wd='+str(urllib.parse.quote(word))+'&from=zici'
+                # html = open_url(url)
+                # html = html.decode('utf-8')
+                # word_obj = models.Word.objects.filter(word=word).first()
+                # # print(html)
+                #
+                # # 获取汉字gif
+                # row_gif = r' <img id="word_bishun" class="bishun" data-gif="(.*?)" src="/static/asset/img_wise/video-stroke.png"/>'
+                # gif = re.findall(row_gif,html)
+                # # print(gif[0])
+                # print(len(gif))
+                # if len(gif) == 0:
+                #     word_obj.gif = ' '
+                #     word_obj.save()
+                # else:
+                #     print(gif[0])
+                #     word_obj.gif = gif[0]
+                #     word_obj.save()
+                #
+                # # 获取汉字拼音
+                # re_pinyin = r'<label>拼 音</label>([\s\S]*)<label>部 首</label>'
+                # pinyin = re.findall(re_pinyin, html)
+                # if len(pinyin)==0:
+                #     word_obj.pinyin = ' '
+                #     word_obj.save()
+                # else:
+                #     word_obj.pinyin = ''
+                #     word_obj.save()
+                #     soup = BeautifulSoup(pinyin[0],'html.parser')
+                #     # print(soup.prettify())
+                #     pinyin = soup.find_all('b')
+                #     # print(123)
+                #     # print(pinyin)
+                #     # print(pinyin[0])
+                #     word_obj = models.Word.objects.filter(word=word).first()
+                #     for i in range(len(pinyin)):
+                #         pinyin_ci = str(pinyin[i])[3:-4]
+                #         print(pinyin_ci)
+                #         word_obj.pinyin = word_obj.pinyin + pinyin_ci + ' '
+                #         word_obj.save()
+                #
+                #     word_obj.pinyin = word_obj.pinyin.lstrip()
+                #     word_obj.save()
+                #
+                # # 获取汉字部首
+                # re_bushou = r'<label>部 首</label>([\s\S]*)<label>笔 画</label>'
+                # bushou = re.findall(re_bushou, html)
+                # # print(bushou)
+                # if len(bushou) ==0:
+                #     word_obj.bushou = ' '
+                #     word_obj.save()
+                # else:
+                #     soup = BeautifulSoup(bushou[0], 'html.parser')
+                #     bushou = soup.find_all('span')
+                #     # print(bushou[0])
+                #     bushou_ci = str(bushou[0])[6:-7]
+                #     print(bushou_ci)
+                #     word_obj = models.Word.objects.filter(word=word).first()
+                #     word_obj.bushou = bushou_ci
+                #     word_obj.save()
+                #
+                # # 获取部首笔画
+                # re_bihua = r'<label>笔 画</label>([\s\S]*)<label>五 行</label>'
+                # bihua = re.findall(re_bihua, html)
+                # # print(bihua)
+                # if len(bihua) ==0:
+                #     continue
+                # else:
+                #     soup = BeautifulSoup(bihua[0],'html.parser')
+                #     bihua = soup.find_all('span')
+                #     # print(bihua[0])
+                #     bihua_ci = str(bihua[0])[6:-7]
+                #     print(bihua_ci)
+                #     word_obj.bihua = bihua_ci
+                #     word_obj.save()
+                #
+                # # 获取词汇意思
+                # re_yisi = r'基本释义([\s\S]*)查看更多'
+                # yisi = re.findall(re_yisi,html)
+                # # print(yisi)
+                # if len(yisi) == 0:
+                #     word_obj.yisi1 = ' '
+                #     word_obj.yisi2 = ' '
+                #     word_obj.yisi3 = ' '
+                #     word_obj.save()
+                # else:
+                #     soup = BeautifulSoup(yisi[0],'html.parser')
+                #     yisi = soup.find_all('p')
+                #     # print(yisi[0])
+                #     yisi1 = ''
+                #     yisi2 = ''
+                #     yisi3 = ''
+                #     if yisi[0] != None:
+                #         yisi1 = str(yisi[0]).replace('<span>', '').replace('</span>', '').replace('<p>', '').replace('</p>', '')
+                #     if yisi[1] != None:
+                #         yisi2 = str(yisi[1]).replace('<span>', '').replace('</span>', '').replace('<p>', '').replace('</p>', '')
+                #     if yisi[2] != None:
+                #         yisi3 = str(yisi[2]).replace('<span>', '').replace('</span>', '').replace('<p>', '').replace('</p>', '')
+                #     word_obj.yisi1 = yisi1
+                #     word_obj.yisi2 = yisi2
+                #     word_obj.yisi3 = yisi3
+                #     word_obj.save()
+
+            ret['msg'] = 'success'
+
+
+        except Exception as e:
+            pass
+
+        return JsonResponse(ret)
+
+class OCRView(APIView):
+    #用于ocr检测
+    authentication_classes = []
+    def get(self, request, *args, **kwargs):
+        ret = {'code': 1000, 'msg': None}
+
+        try:
+            print(1)
 
         except Exception as e:
             pass

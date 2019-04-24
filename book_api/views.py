@@ -91,10 +91,9 @@ class IsbnView(APIView):
             data = html.read()
             # 转换成JSON
             data_json = json.loads(data)
+            print(data_json['code'])
             ret['title'] = data_json['title']
-            # if data_json['title'] == '':
-            #     ret['code'] = 2000
-            ret['author'] = data_json['author']
+            ret['author'] = data_json['author'][0]
             ret['publisher'] = data_json['publisher']
             ret['isbn'] = data_json['isbn13']
             ret['summary'] = data_json['summary']
