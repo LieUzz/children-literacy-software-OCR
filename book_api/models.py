@@ -10,7 +10,7 @@ class RecommendBook(models.Model):
     simage = models.CharField(max_length=128, default='')
     mimage = models.CharField(max_length=128, default='')
     limage = models.CharField(max_length=128, default='')
-    recommendrank = models.CharField(max_length=16, default=0)
+    recommendrank = models.IntegerField(max_length=16, default=0)
 
 class FavoriteBook(models.Model):
     user = models.ForeignKey(UserInfo, on_delete = models.DO_NOTHING)

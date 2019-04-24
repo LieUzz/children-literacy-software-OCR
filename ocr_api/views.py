@@ -202,8 +202,8 @@ class GetImgView(APIView):
                 f.write(img)
 
 
-            # ret['msg'] = '用户查找成功'
+            # ret['msg'] = 'success'
 
         except Exception as e:
             pass
-        return HttpResponse(ret)
+        return JsonResponse(ret)
