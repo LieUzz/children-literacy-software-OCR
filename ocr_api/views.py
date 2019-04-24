@@ -11,6 +11,7 @@ import tool.models
 
 class WordInfoView(APIView):
     # 用于用户查询词语
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code': 1001, 'word': None, 'gif': None, 'pinyin': None, 'bihua': None, 'bushou': None,
                'yisi1': None, 'yisi2': None, 'yisi3': None}
@@ -26,7 +27,8 @@ class WordInfoView(APIView):
                 wordexit.time = datetime.now()
                 wordexit.save()
             else:
-                models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word.id)
+                print('err')
+                # models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word.id)
 
             ret['word'] = word.word
             ret['gif'] = word.gif
@@ -168,9 +170,9 @@ class HistoryDelView(APIView):
     def post(self, request, *args, **kwargs):
         ret = {'code': 1001, 'msg': None}
         try:
-            word = request._request.GET.get('word')
+            word = request._request.POST.get('word')
             # print(word)
-            username = request._request.GET.get('username')
+            username = request._request.POST.get('username')
             # print(username)
             user_obj = models.UserInfo.objects.filter(username=username).first()
             word = tool.models.Word.objects.filter(word=word).first()
