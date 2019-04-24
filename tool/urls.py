@@ -7,5 +7,6 @@ urlpatterns = [
     path('book/', views.BookView.as_view()),
     path('word/', views.WordView.as_view()),
     path('baiduhanzi/', views.BaiDuHanZiView.as_view()),
-    path('ocr',views.OCRView.as_view())
+    path('ocr/',views.OCRView.as_view()),
+    path('img/',views.GetImgView.as_view()),
 ]

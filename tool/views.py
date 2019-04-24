@@ -384,3 +384,24 @@ class OCRView(APIView):
             pass
 
         return JsonResponse(ret)
+
+class GetImgView(APIView):
+    #用于ocr检测
+    authentication_classes = []
+    def get(self, request, *args, **kwargs):
+        ret = {'code': 1000, 'msg': None}
+
+        try:
+            url = 'https://placekitten.com/g/500/600'
+            html = open_url(url)
+
+
+            with open('cat.jpg', 'wb') as f:
+                f.write(html)
+
+
+            ret['msg'] = 'success'
+        except Exception as e:
+            pass
+
+        return JsonResponse(ret)

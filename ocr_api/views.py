@@ -187,3 +187,23 @@ class HistoryDelView(APIView):
         except Exception as e:
             pass
         return JsonResponse(ret)
+
+
+class GetImgView(APIView):
+
+    # 用于用户查过的词语的获取
+    authentication_classes = []
+    def get(self, request, *args, **kwargs):
+        ret = {'code':1001, 'msg':None}
+        try:
+            img = request._request.GET.get('img')
+
+            with open('cat.jpg', 'wb') as f:
+                f.write(img)
+
+
+            # ret['msg'] = '用户查找成功'
+
+        except Exception as e:
+            pass
+        return HttpResponse(ret)
