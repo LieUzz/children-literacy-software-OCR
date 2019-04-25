@@ -1,4 +1,3 @@
-import cv2
 from django.http import JsonResponse
 from bs4 import BeautifulSoup
 from rest_framework.views import APIView
@@ -12,9 +11,6 @@ import re
 import book_api.models
 import word_api.models
 import ocr_api.models
-# from pip import Image
-import pathlib
-import base64
 
 
 
