@@ -422,10 +422,10 @@ class GetImgOneView(APIView):
             img = request.FILES.get('images')
             ret['print'] = str(type(img))
             print(type(img))
-            default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/statics/'+img.name,
-                                 ContentFile(img.read()))
-            # default_storage.save('/home/OCR/tool/statics/' + img.name,
+            # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/statics/'+img.name,
             #                      ContentFile(img.read()))
+            default_storage.save('/home/OCR/tool/statics/' + img.name,
+                                 ContentFile(img.read()))
 
             # tmp_file = os.path.join(settings.STATICFILES_DIRS,)
 

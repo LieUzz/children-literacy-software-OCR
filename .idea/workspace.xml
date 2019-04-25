@@ -50,6 +50,7 @@
               <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#320#1520#0" />
                 <element signature="e#1559#4001#0" />
                 <element signature="e#4040#6463#0" />
                 <element signature="e#6501#7053#0" />
@@ -134,9 +135,9 @@
         <option value="$PROJECT_DIR$/tool/utils/division.py" />
         <option value="$PROJECT_DIR$/tool/utils/water3.py" />
         <option value="$PROJECT_DIR$/tool/urls.py" />
-        <option value="$PROJECT_DIR$/ocr_api/views.py" />
         <option value="$PROJECT_DIR$/bishe/settings.py" />
         <option value="$PROJECT_DIR$/tool/views.py" />
+        <option value="$PROJECT_DIR$/ocr_api/views.py" />
       </list>
     </option>
   </component>
@@ -171,6 +172,12 @@
               <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
               <item name="bishe" type="462c0819:PsiDirectoryNode" />
               <item name="tool" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bishe" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -252,12 +259,12 @@
       <workItem from="1555085062700" duration="58461000" />
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
-      <workItem from="1555739811413" duration="106644000" />
+      <workItem from="1555739811413" duration="106925000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242479000" />
+    <option name="totallyTimeSpent" value="242760000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -270,7 +277,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17453505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -632,6 +638,7 @@
           <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#320#1520#0" />
             <element signature="e#1559#4001#0" />
             <element signature="e#4040#6463#0" />
             <element signature="e#6501#7053#0" />
