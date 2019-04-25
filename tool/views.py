@@ -420,7 +420,7 @@ class GetImgOneView(APIView):
             image = Image.open(ContentFile(img.read()))
             # image.show()
             # print(1)
-            # image.save(img.name)
+            image.save(img.name)
             # print(2)
 
 
