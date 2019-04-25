@@ -11,6 +11,7 @@ import re
 import book_api.models
 import word_api.models
 import ocr_api.models
+from PIL import Image
 
 
 
@@ -413,14 +414,14 @@ class GetImgOneView(APIView):
     def post(self, request, *args, **kwargs):
         ret = {'code': 1001, 'msg': None}
         try:
-            # img = request.FILES.get('images')
-            # print(type(img))
+            img = request.FILES.get('images')
+            print(type(img))
 
-            # image = Image.open(ContentFile(img.read()))
-            # image.show()
-            # print(1)
-            # image.save(img.name)
-            # print(2)
+            image = Image.open(ContentFile(img.read()))
+            image.show()
+            print(1)
+            image.save(img.name)
+            print(2)
 
 
 
