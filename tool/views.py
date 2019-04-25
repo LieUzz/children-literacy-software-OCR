@@ -13,8 +13,9 @@ import book_api.models
 import word_api.models
 import ocr_api.models
 from PIL import Image
+import pathlib
 import base64
-import api.models
+
 
 
 def open_url(url):
@@ -418,10 +419,11 @@ class GetImgOneView(APIView):
         try:
             img = request.FILES.get('images')
             print(type(img))
+
             image = Image.open(ContentFile(img.read()))
             image.show()
             print(1)
-            image.save('aqy.png')
+            image.save(img.name)
             print(2)
 
 
