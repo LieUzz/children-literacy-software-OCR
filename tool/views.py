@@ -411,29 +411,29 @@ class GetImgView(APIView):
 
         return JsonResponse(ret)
 
-class GetImgOneView(APIView):
-    # 用于用户查过的词语的获取
-    authentication_classes = []
-    def post(self, request, *args, **kwargs):
-        ret = {'code': 1001, 'msg': None}
-        try:
-            img = request.FILES.get('images')
-            print(type(img))
-
-            # image = Image.open(ContentFile(img.read()))
-            # image.show()
-            # print(1)
-            # image.save(img.name)
-            # print(2)
-
-
-
-            # with open('cat.jpg', 'wb') as f:
-            #     f.write(img)
-
-
-            ret['msg'] = 'success'
-
-        except Exception as e:
-            pass
-        return JsonResponse(ret)
+# class GetImgOneView(APIView):
+#     # 用于用户查过的词语的获取
+#     authentication_classes = []
+#     def post(self, request, *args, **kwargs):
+#         ret = {'code': 1001, 'msg': None}
+#         try:
+#             img = request.FILES.get('images')
+#             print(type(img))
+#
+#             # image = Image.open(ContentFile(img.read()))
+#             # image.show()
+#             # print(1)
+#             # image.save(img.name)
+#             # print(2)
+#
+#
+#
+#             # with open('cat.jpg', 'wb') as f:
+#             #     f.write(img)
+#
+#
+#             ret['msg'] = 'success'
+#
+#         except Exception as e:
+#             pass
+#         return JsonResponse(ret)
