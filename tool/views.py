@@ -1,4 +1,3 @@
-import cv2
 from django.http import JsonResponse
 from bs4 import BeautifulSoup
 from rest_framework.views import APIView
