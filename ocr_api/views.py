@@ -1,13 +1,19 @@
 from django.shortcuts import HttpResponse
 from datetime import *
 from django.http import JsonResponse
+from django.core.files.base import ContentFile
 from rest_framework.views import APIView
-from . import models, serializers
-import json
 from urllib.request import Request, urlopen
+from PIL import Image
+from . import models, serializers
+from tool.utils.division import my_division
+import json
 import urllib.parse
 import urllib
 import tool.models
+import pytesseract
+import numpy
+import cv2
 
 class WordInfoView(APIView):
     # 用于用户查询词语
@@ -188,21 +194,34 @@ class HistoryDelView(APIView):
             pass
         return JsonResponse(ret)
 
-
 class GetImgView(APIView):
 
     # 用于用户查过的词语的获取
     authentication_classes = []
-    def get(self, request, *args, **kwargs):
-        ret = {'code':1001, 'msg':None}
+    def post(self, request, *args, **kwargs):
+        ret = {'code': 1001, 'msg': None, 'type': None, 'len': None, 'word': None}
         try:
-            img = request._request.GET.get('img')
+            # 获取图片FILES
+            img_row = request.FILES.get('images')
+            ret['type'] = str(type(img_row))
+            ret['len'] = str(len(img_row))
 
-            with open('cat.jpg', 'wb') as f:
-                f.write(img)
+            # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
+            image_PIL = Image.open(ContentFile(img_row.read()))
+            image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            imageo = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            point = [55, 125]
+
+            result = my_division(image, imageo, point)
+
+            word = pytesseract.image_to_string(result, lang='chi_sim')
+            ret['word'] = word
+            print(word)
+
+            ret['msg'] = 'success'
 
 
-            # ret['msg'] = 'success'
+        # ret['msg'] = 'success'
 
         except Exception as e:
             pass

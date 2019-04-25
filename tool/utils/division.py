@@ -36,6 +36,7 @@ def segment_on_dt(a, img):
 def my_division(img, imgo, point):
     # 不能这个操作，tesseract识别不了
     # rer, imgo = cv2.threshold(imgo, 200, 255, cv2.THRESH_BINARY)
+
     imgo = cv2.bitwise_not(imgo)
     # cv2.imshow("binary image", imgo)
 
@@ -46,7 +47,7 @@ def my_division(img, imgo, point):
     _, img_bin = cv2.threshold(img_gray, 0, 255,
                                cv2.THRESH_OTSU)
     img_bin = cv2.bitwise_not(img_bin)
-    cv2.imshow("binary image", img_bin)
+    # cv2.imshow("binary image", img_bin)
     # 上面这个img_bin是黑底白字，而且是经过膨胀过的
     # cv2.imwrite("res0.png", img_bin)
     # 去噪消白点
@@ -95,15 +96,15 @@ def my_division(img, imgo, point):
 
 if __name__ == '__main__':
     # 白底黑字
-    img = cv2.imread("./origin9.png")
+    img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/tool/utils/origin4.png")
     # imgo[img origin]用来最后做掩模操作，需要原图
-    imgo = cv2.imread("./origin9.png", 0)
-    _, imgo = cv2.threshold(imgo, 190, 255, cv2.THRESH_BINARY)
+    imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/tool/utils/origin4.png", 0)
+    # _, imgo = cv2.threshold(imgo, 190, 255, cv2.THRESH_BINARY)
     # cv2.imshow("binary image", imgo)
     # 假设这个点是point[25,25], 二维数组
-    point = [55, 55]
+    point = [240, 310]
     result = my_division(img, imgo, point)
-    # cv2.imshow("binary image", result)
+    cv2.imshow("binary image", result)
     code = pytesseract.image_to_string(result, lang='chi_sim')
     print(code)
     cv2.waitKey(0)
