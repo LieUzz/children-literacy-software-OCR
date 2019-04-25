@@ -12,7 +12,7 @@ import re
 import book_api.models
 import word_api.models
 import ocr_api.models
-from PIL import Image
+# from PIL import Image
 import pathlib
 import base64
 
@@ -420,11 +420,11 @@ class GetImgOneView(APIView):
             img = request.FILES.get('images')
             print(type(img))
 
-            image = Image.open(ContentFile(img.read()))
-            image.show()
-            print(1)
-            image.save(img.name)
-            print(2)
+            # image = Image.open(ContentFile(img.read()))
+            # image.show()
+            # print(1)
+            # image.save(img.name)
+            # print(2)
 
 
 
