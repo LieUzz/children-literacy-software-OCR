@@ -1,10 +1,10 @@
-import numpy
 from django.http import JsonResponse
 from bs4 import BeautifulSoup
 from rest_framework.views import APIView
 from urllib.request import Request, urlopen
 from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
+from tool.utils.division import my_division
+from PIL import Image
 from . import models
 import json
 import urllib.parse
@@ -13,10 +13,9 @@ import re
 import book_api.models
 import word_api.models
 import ocr_api.models
-from tool.utils.division import my_division
-from PIL import Image
 import pytesseract
 import cv2
+import numpy
 
 
 
