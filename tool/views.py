@@ -12,7 +12,7 @@ import re
 import book_api.models
 import word_api.models
 import ocr_api.models
-# from PIL import Image
+# from pip import Image
 import pathlib
 import base64
 
