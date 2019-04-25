@@ -417,11 +417,11 @@ class GetImgOneView(APIView):
             img = request.FILES.get('images')
             print(type(img))
 
-            image = Image.open(ContentFile(img.read()))
-            image.show()
-            print(1)
-            image.save(img.name)
-            print(2)
+            # image = Image.open(ContentFile(img.read()))
+            # image.show()
+            # print(1)
+            # image.save(img.name)
+            # print(2)
 
 
 
