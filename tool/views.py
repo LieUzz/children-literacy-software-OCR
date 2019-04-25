@@ -409,19 +409,20 @@ class GetImgView(APIView):
         return JsonResponse(ret)
 
 class GetImgOneView(APIView):
-    # 用于用户查过的词语的获取
+    # 用于获取并储存图片
     authentication_classes = []
     def post(self, request, *args, **kwargs):
-        ret = {'code': 1001, 'msg': None}
+        ret = {'code': 1001, 'msg': None, 'print':None}
         try:
             img = request.FILES.get('images')
+            ret['print'] = type(img)
             print(type(img))
 
             image = Image.open(ContentFile(img.read()))
             # image.show()
             # print(1)
             image.save(img.name)
-            # print(2)
+            print(2)
 
 
 
