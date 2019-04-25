@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 from rest_framework.views import APIView
 from urllib.request import Request, urlopen
 from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from django.conf import settings
 from . import models
 import json
 import urllib.parse
@@ -11,7 +13,10 @@ import re
 import book_api.models
 import word_api.models
 import ocr_api.models
+
+import os
 from PIL import Image
+
 
 
 
@@ -417,12 +422,18 @@ class GetImgOneView(APIView):
             img = request.FILES.get('images')
             ret['print'] = str(type(img))
             print(type(img))
+            default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/statics/'+img.name,
+                                 ContentFile(img.read()))
+            # default_storage.save('/home/OCR/tool/statics/' + img.name,
+            #                      ContentFile(img.read()))
 
-            image = Image.open(ContentFile(img.read()))
-            # image.show()
-            # print(1)
-            image.save(img.name)
-            print(2)
+            # tmp_file = os.path.join(settings.STATICFILES_DIRS,)
+
+            # image = Image.open(ContentFile(img.read()))
+            # # image.show()
+            # # print(1)
+            # image.save('static',img.name)
+            # print(2)
 
 
 
