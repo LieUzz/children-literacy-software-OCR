@@ -415,7 +415,7 @@ class GetImgOneView(APIView):
         ret = {'code': 1001, 'msg': None, 'print':None}
         try:
             img = request.FILES.get('images')
-            ret['print'] = type(img)
+            ret['print'] = str(type(img))
             print(type(img))
 
             image = Image.open(ContentFile(img.read()))
