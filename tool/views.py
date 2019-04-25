@@ -417,8 +417,8 @@ class GetImgOneView(APIView):
     def post(self, request, *args, **kwargs):
         ret = {'code': 1001, 'msg': None}
         try:
-            img = request.FILES.get('images')
-            print(type(img))
+            # img = request.FILES.get('images')
+            # print(type(img))
 
             # image = Image.open(ContentFile(img.read()))
             # image.show()
