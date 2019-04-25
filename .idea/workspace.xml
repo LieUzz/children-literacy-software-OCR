@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61322b10-2ea7-475a-8288-872ba8bcec99" name="Default Changelist" comment="" />
+    <list default="true" id="61322b10-2ea7-475a-8288-872ba8bcec99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/tool/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +45,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
+            <state relative-caret-position="315">
+              <caret line="201" column="28" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="e#320#1520#0" />
@@ -59,13 +61,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="424" column="84" selection-start-line="424" selection-start-column="77" selection-end-line="424" selection-end-column="84" />
+            <state relative-caret-position="251">
+              <caret line="429" column="57" lean-forward="true" selection-start-line="429" selection-start-column="57" selection-end-line="430" selection-end-column="56" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#393#761#0" />
                 <element signature="e#791#3340#0" />
                 <element signature="e#3371#5534#0" />
@@ -136,8 +138,8 @@
         <option value="$PROJECT_DIR$/tool/utils/water3.py" />
         <option value="$PROJECT_DIR$/tool/urls.py" />
         <option value="$PROJECT_DIR$/bishe/settings.py" />
-        <option value="$PROJECT_DIR$/tool/views.py" />
         <option value="$PROJECT_DIR$/ocr_api/views.py" />
+        <option value="$PROJECT_DIR$/tool/views.py" />
       </list>
     </option>
   </component>
@@ -259,12 +261,12 @@
       <workItem from="1555085062700" duration="58461000" />
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
-      <workItem from="1555739811413" duration="106925000" />
+      <workItem from="1555739811413" duration="107242000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242760000" />
+    <option name="totallyTimeSpent" value="243077000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -277,8 +279,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17453505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17453505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32876712" />
@@ -291,7 +294,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21232876" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21232876" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32876712" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32876712" />
@@ -616,32 +619,32 @@
     <entry file="file://$PROJECT_DIR$/tool/statics/bilibili_CXQCXZu.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="424" column="84" selection-start-line="424" selection-start-column="77" selection-end-line="424" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-            <element signature="e#393#761#0" />
-            <element signature="e#791#3340#0" />
-            <element signature="e#3371#5534#0" />
-            <element signature="e#5565#8306#0" />
-            <element signature="e#8343#14258#0" />
-            <element signature="e#14288#14533#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
+        <state relative-caret-position="315">
+          <caret line="201" column="28" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#320#1520#0" />
             <element signature="e#1559#4001#0" />
             <element signature="e#4040#6463#0" />
             <element signature="e#6501#7053#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="429" column="57" lean-forward="true" selection-start-line="429" selection-start-column="57" selection-end-line="430" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#393#761#0" />
+            <element signature="e#791#3340#0" />
+            <element signature="e#3371#5534#0" />
+            <element signature="e#5565#8306#0" />
+            <element signature="e#8343#14258#0" />
+            <element signature="e#14288#14533#0" />
           </folding>
         </state>
       </provider>

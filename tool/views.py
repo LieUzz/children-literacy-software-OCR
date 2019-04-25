@@ -1,3 +1,4 @@
+import cv2
 from django.http import JsonResponse
 from bs4 import BeautifulSoup
 from rest_framework.views import APIView
@@ -417,17 +418,21 @@ class GetImgOneView(APIView):
     # 用于获取并储存图片
     authentication_classes = []
     def post(self, request, *args, **kwargs):
-        ret = {'code': 1001, 'msg': None, 'print':None}
+        ret = {'code': 1001, 'msg': None, 'print':None, 'len':None}
         try:
             img = request.FILES.get('images')
             ret['print'] = str(type(img))
+            ret['len'] = str(len(img))
             print(type(img))
+            print(len(img))
+
             # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/statics/'+img.name,
             #                      ContentFile(img.read()))
-            default_storage.save('/home/OCR/tool/statics/' + img.name,
-                                 ContentFile(img.read()))
+            # default_storage.save('/home/OCR/tool/statics/' + img.name,
+            #                      ContentFile(img.read()))
 
-            # tmp_file = os.path.join(settings.STATICFILES_DIRS,)
+
+
 
             # image = Image.open(ContentFile(img.read()))
             # # image.show()
