@@ -393,19 +393,20 @@ class OCRView(APIView):
 
         return JsonResponse(ret)
 
-class GetImgView(APIView):
+class GetPiontView(APIView):
     #用于ocr检测
     authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code': 1000, 'msg': None}
 
         try:
-            url = 'https://placekitten.com/g/10/20'
-            html = open_url(url)
-            print(html)
+            point_x = request._request.GET.get('point_x')
+            point_y = request._request.GET.get('point_y')
 
-            # with open('cat.jpg', 'wb') as f:
-            #     f.write(html)
+            print('X:',point_x)
+            print('Y:', point_y)
+
+
 
 
             ret['msg'] = 'success'
@@ -462,7 +463,7 @@ class GetImgOneView(APIView):
             # print(2)
 
 
-
+            # 方法三
             # with open('cat.jpg', 'wb') as f:
             #     f.write(img)
 
