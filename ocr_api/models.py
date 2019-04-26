@@ -4,7 +4,7 @@ from tool.models import Word
 
 class UserWordHistory(models.Model):
     user = models.ForeignKey(UserInfo, on_delete = models.DO_NOTHING)
-    wordinfo = models.OneToOneField(Word, on_delete= models.DO_NOTHING)
+    wordinfo = models.OneToOneField(Word, on_delete= models.CASCADE)
     time = models.DateTimeField(auto_now=True)
 
 class Words(models.Model):

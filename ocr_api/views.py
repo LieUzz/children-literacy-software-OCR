@@ -34,7 +34,7 @@ class WordInfoView(APIView):
                 wordexit.time = datetime.now()
                 wordexit.save()
             else:
-                print('err')
+                print('create')
                 models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word.id)
 
             ret['word'] = word.word

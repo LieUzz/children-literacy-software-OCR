@@ -434,7 +434,7 @@ class GetPiontView(APIView):
                 wordexit.time = datetime.now()
                 wordexit.save()
             else:
-                print('creat')
+                print('create')
                 ocr_api.models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word_obj.id)
 
             ret['word'] = word_obj.word
