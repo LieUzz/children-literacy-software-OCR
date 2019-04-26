@@ -1,3 +1,4 @@
+from django.core.files.storage import default_storage
 from django.http import JsonResponse
 from bs4 import BeautifulSoup
 from rest_framework.views import APIView
@@ -413,7 +414,7 @@ class GetImgView(APIView):
         return JsonResponse(ret)
 
 class GetImgOneView(APIView):
-    # 用于获取并储存图片
+    # 用于获取并识别汉字
     authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code': 1001, 'msg': None, 'print':None, 'len':None, 'word':None}
@@ -423,23 +424,23 @@ class GetImgOneView(APIView):
             ret['print'] = str(type(img_row))
             ret['len'] = str(len(img_row))
 
-            # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
-            image_PIL = Image.open(ContentFile(img_row.read()))
-            image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
-            imageo = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
-            point = [55,125]
-
-            result =  my_division(image, imageo, point)
-
-            word = pytesseract.image_to_string(result, lang='chi_sim')
-            ret['word'] = word
-            print(word)
+            # # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
+            # image_PIL = Image.open(ContentFile(img_row.read()))
+            # image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            # imageo = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            # point = [55,125]
+            #
+            # result =  my_division(image, imageo, point)
+            #
+            # word = pytesseract.image_to_string(result, lang='chi_sim')
+            # ret['word'] = word
+            # print(word)
 
 
             # 保存图片
             # 方法一
-            # default_storage.save('/home/OCR/tool/statics/' + img.name,
-            #                      ContentFile(img.read()))
+            default_storage.save('/home/OCR/tool/statics/' + img_row.name,
+                                 ContentFile(img_row.read()))
             # 方法二
             # image = Image.open(ContentFile(img.read()))
             # image.show()

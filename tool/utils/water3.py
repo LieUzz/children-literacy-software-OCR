@@ -66,7 +66,6 @@ pixelset.remove(0)
 if 255 in pixelset:
     pixelset.remove(255)
 # 假设该点所在的像素值等于pixelset[0]
-print(123)
 for i in range(tmp.shape[0]):
     for ii in range(tmp.shape[1]):
         if tmp[i][ii]==pixelset[0] or tmp[i][ii]==0:

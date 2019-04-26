@@ -12,7 +12,7 @@ import urllib.parse
 import urllib
 import tool.models
 import pytesseract
-# import numpy
+import numpy
 import cv2
 
 class WordInfoView(APIView):
@@ -208,21 +208,20 @@ class GetImgView(APIView):
 
             # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
             image_PIL = Image.open(ContentFile(img_row.read()))
-            print(pytesseract.image_to_string(image_PIL, lang='chi_sim'))
-            # print(1)
-            # image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
-            # print(pytesseract.image_to_string(image, lang='chi_sim'))
-            # print(2)
-            # imageo = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
-            # print(3)
-            # point = [55, 55]
-            # result = my_division(image, imageo, point)
-            # print(type(result))
-            # print(4)
-            # word = pytesseract.image_to_string(result, lang='chi_sim')
-            # print(5)
-            # ret['word'] = word
-            # print(word)
+            print(1)
+            image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            print(pytesseract.image_to_string(image, lang='chi_sim'))
+            print(2)
+            imageo = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            print(3)
+            point = [55, 55]
+            result = my_division(image, imageo, point)
+            print(type(result))
+            print(4)
+            word = pytesseract.image_to_string(result, lang='chi_sim')
+            print(5)
+            ret['word'] = word
+            print(word)
 
             ret['msg'] = 'success'
 
