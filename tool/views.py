@@ -463,7 +463,7 @@ class GetImgOneView(APIView):
             ret['len'] = str(len(img_row))
             if os.path.exists('/home/OCR/tool/statics/images.png'):
                 os.remove('/home/OCR/tool/statics/images.png')
-                print('已删除图片')
+                # print('已删除图片')
 
 
 
