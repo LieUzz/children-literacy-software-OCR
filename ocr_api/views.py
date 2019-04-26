@@ -210,11 +210,13 @@ class GetImgView(APIView):
             image_PIL = Image.open(ContentFile(img_row.read()))
             print(1)
             image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            print(pytesseract.image_to_string(image, lang='chi_sim'))
             print(2)
             imageo = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
             print(3)
             point = [55, 55]
             result = my_division(image, imageo, point)
+            print(type(result))
             print(4)
             word = pytesseract.image_to_string(result, lang='chi_sim')
             print(5)
