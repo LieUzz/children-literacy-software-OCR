@@ -465,8 +465,6 @@ class GetImgOneView(APIView):
                 os.remove('/home/OCR/tool/statics/images.png')
                 print('已删除图片')
 
-
-
             # # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
             # image_PIL = Image.open(ContentFile(img_row.read()))
             # image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
@@ -483,8 +481,8 @@ class GetImgOneView(APIView):
             # 保存图片
             # 方法一
             # 服务端
-            default_storage.save('/home/OCR/tool/statics/' + img_row.name,
-                                 ContentFile(img_row.read()))
+            # default_storage.save('/home/OCR/tool/statics/' + img_row.name,
+            #                      ContentFile(img_row.read()))
             # 本地
             # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/statics/' + img_row.name,
             #                      ContentFile(img_row.read()))
