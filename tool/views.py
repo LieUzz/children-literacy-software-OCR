@@ -397,12 +397,13 @@ class GetPiontView(APIView):
     #用于ocr检测
     authentication_classes = []
     def get(self, request, *args, **kwargs):
-        ret = {'code': 1000, 'msg': None}
+        ret = {'code': 1001, 'msg': None}
 
         try:
             point_x = request._request.GET.get('point_x')
             point_y = request._request.GET.get('point_y')
 
+            print(type(point_x))
             print('X:',point_x)
             print('Y:', point_y)
 
