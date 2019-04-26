@@ -210,7 +210,7 @@ class GetImgView(APIView):
             image_PIL = Image.open(ContentFile(img_row.read()))
             image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
             imageo = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
-            point = [55, 125]
+            point = [55, 55]
 
             result = my_division(image, imageo, point)
 

@@ -75,6 +75,7 @@ class BookRecommendView(APIView):
 class IsbnView(APIView):
 
     # 用于用户书籍推荐
+    authentication_classes = []
     def get(self, request, *args, **kwargs):
         ret = {'code':1001, 'title':None, 'author':None, 'publisher':None, 'isbn':None, 'summary':None,
                'simage':None, 'mimage':None, 'limage':None }
@@ -91,7 +92,8 @@ class IsbnView(APIView):
             data = html.read()
             # 转换成JSON
             data_json = json.loads(data)
-            print(data_json['code'])
+            # print(data_json)
+            # print(data_json['code'])
             ret['title'] = data_json['title']
             ret['author'] = data_json['author'][0]
             ret['publisher'] = data_json['publisher']
