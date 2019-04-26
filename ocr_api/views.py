@@ -11,6 +11,7 @@ import json
 import urllib.parse
 import urllib
 import tool.models
+import usr_api.models
 import pytesseract
 import numpy
 import cv2
@@ -26,7 +27,7 @@ class WordInfoView(APIView):
             # print(word)
             username = request._request.GET.get('username')
             # print(username)
-            user_obj = models.UserInfo.objects.filter(username=username).first()
+            user_obj = usr_api.models.UserInfo.objects.filter(username=username).first()
             word = tool.models.Word.objects.filter(word=word).first()
             wordexit = models.UserWordHistory.objects.filter(user_id=user_obj.id, wordinfo_id=word.id).first()
             if wordexit:

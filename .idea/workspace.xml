@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61322b10-2ea7-475a-8288-872ba8bcec99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ocr_api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ocr_api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,22 +47,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/utils/water3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="24" column="51" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="51" />
+            <state relative-caret-position="-332">
+              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="e#1840#4282#0" />
@@ -75,14 +64,38 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="407" lean-forward="true" selection-start-line="407" selection-end-line="407" />
+            <state relative-caret-position="115">
+              <caret line="427" lean-forward="true" selection-start-line="427" selection-end-line="427" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#878#3427#0" />
                 <element signature="e#3458#5621#0" />
                 <element signature="e#5652#8393#0" />
                 <element signature="e#8430#14345#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ocr_api/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/utils/division.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="825">
+              <caret line="55" column="36" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="55" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,15 +168,15 @@
         <option value="$PROJECT_DIR$/ocr_api/serializers.py" />
         <option value="$PROJECT_DIR$/ocr_api/urls.py" />
         <option value="$PROJECT_DIR$/book_api/models.py" />
-        <option value="$PROJECT_DIR$/tool/utils/division.py" />
         <option value="$PROJECT_DIR$/bishe/settings.py" />
         <option value="$PROJECT_DIR$/usr_api/views.py" />
         <option value="$PROJECT_DIR$/book_api/urls.py" />
         <option value="$PROJECT_DIR$/book_api/views.py" />
         <option value="$USER_HOME$/PycharmProjects/test.py" />
         <option value="$PROJECT_DIR$/tool/utils/water3.py" />
-        <option value="$PROJECT_DIR$/ocr_api/views.py" />
         <option value="$PROJECT_DIR$/tool/urls.py" />
+        <option value="$PROJECT_DIR$/ocr_api/views.py" />
+        <option value="$PROJECT_DIR$/tool/utils/division.py" />
         <option value="$PROJECT_DIR$/tool/views.py" />
       </list>
     </option>
@@ -192,7 +205,18 @@
             <path>
               <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
               <item name="bishe" type="462c0819:PsiDirectoryNode" />
+              <item name="ocr_api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bishe" type="462c0819:PsiDirectoryNode" />
               <item name="tool" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bishe" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -274,12 +298,12 @@
       <workItem from="1555085062700" duration="58461000" />
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
-      <workItem from="1555739811413" duration="135460000" />
+      <workItem from="1555739811413" duration="137161000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271295000" />
+    <option name="totallyTimeSpent" value="272996000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -294,7 +318,7 @@
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17453505" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17453505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32876712" />
@@ -307,7 +331,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30136988" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30136988" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32876712" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32876712" />
@@ -505,21 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ocr_api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/usr_api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bishe/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-104">
@@ -597,30 +606,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/utils/division.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-868">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/utils/water3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -629,19 +618,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/utils/origin9.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="24" column="51" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1840#4282#0" />
-            <element signature="e#4321#6712#0" />
-            <element signature="e#6750#7676#0" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/urls.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -653,10 +629,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/usr_api/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ocr_api/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/utils/division.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="36" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="55" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/utils/water3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-332">
+          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1840#4282#0" />
+            <element signature="e#4321#6712#0" />
+            <element signature="e#6750#7676#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="407" lean-forward="true" selection-start-line="407" selection-end-line="407" />
+        <state relative-caret-position="115">
+          <caret line="427" lean-forward="true" selection-start-line="427" selection-end-line="427" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#878#3427#0" />

@@ -14,8 +14,10 @@ import re
 import book_api.models
 import word_api.models
 import ocr_api.models
+import usr_api.models
 import pytesseract
 import cv2
+from datetime import *
 import numpy
 import os
 
@@ -397,20 +399,53 @@ class GetPiontView(APIView):
     #用于ocr检测
     authentication_classes = []
     def get(self, request, *args, **kwargs):
-        ret = {'code': 1001, 'msg': None}
+        ret = {'code': 1001, 'word': None, 'gif': None, 'pinyin': None, 'bihua': None, 'bushou': None,
+               'yisi1': None, 'yisi2': None, 'yisi3': None}
 
         try:
             point_x = request._request.GET.get('point_x')
             point_y = request._request.GET.get('point_y')
+            username = request._request.GET.get('username')
+            user_obj = usr_api.models.UserInfo.objects.filter(username=username).first()
+            print(user_obj)
 
-            print(type(point_x))
+            # print(type(point_x))
             print('X:',point_x)
             print('Y:', point_y)
+            point = [0,0]
+            print(point)
+            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/tool/statics/origin9.png")
+            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/tool/statics/origin9.png", 0)
+            point[0] = int(point_x)
+            point[1] = int(point_y)
+            print(point)
+            result = my_division(img, imgo, point)
+            word = pytesseract.image_to_string(result, lang='chi_sim')
+            print(word)
+            if(len(word) == 0):
+                ret['code'] = 2000
 
 
+            word_obj = models.Word.objects.filter(word=word).first()
+            print(word_obj)
+            wordexit = ocr_api.models.UserWordHistory.objects.filter(user_id=user_obj.id, wordinfo_id=word_obj.id).first()
+            print(123)
+            if wordexit:
+                wordexit.time = datetime.now()
+                wordexit.save()
+            else:
+                print('creat')
+                ocr_api.models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word_obj.id)
 
+            ret['word'] = word_obj.word
+            ret['gif'] = word_obj.gif
+            ret['pinyin'] = word_obj.pinyin
+            ret['bushou'] = word_obj.bushou
+            ret['bihua'] = word_obj.bihua
+            ret['yisi1'] = word_obj.yisi1
+            ret['yisi2'] = word_obj.yisi2
+            ret['yisi3'] = word_obj.yisi3
 
-            ret['msg'] = 'success'
         except Exception as e:
             pass
 
