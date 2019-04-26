@@ -414,8 +414,8 @@ class GetPiontView(APIView):
             print('Y:', point_y)
             point = [0,0]
             print(point)
-            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/tool/statics/origin9.png")
-            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/tool/statics/origin9.png", 0)
+            img = cv2.imread("/home/OCR/tool/statics/images.png")
+            imgo = cv2.imread("/home/OCR/tool/statics/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print(point)
