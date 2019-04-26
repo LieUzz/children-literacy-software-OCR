@@ -241,6 +241,34 @@ class FavoriteSearchView(APIView):
             pass
         return HttpResponse(ret)
 
+class IsFavoriteView(APIView):
+
+    # 用于用户书架的查询
+    authentication_classes = []
+    def get(self, request, *args, **kwargs):
+        ret = {'code': 1001, 'msg': None, 'isfavorate': None}
+        try:
+            username = request._request.GET.get('username')
+            isbn = request._request.GET.get('isbn')
+            # print(username)
+            obj = usr_api.models.UserInfo.objects.filter(username=username).first()
+            if not obj:
+                ret['code'] = 2000
+                ret['msg'] = '用户不存在'
+                return JsonResponse(ret)
+            book_obj = models.FavoriteBook.objects.filter(user_id=obj.id, isbn=isbn).first()
+
+            if book_obj:
+                ret['msg'] = '书籍在书架'
+                ret['isfavorate'] = 1
+            else:
+                ret['msg'] = '书籍不在书架'
+                ret['isfavorate'] = 0
+
+        except Exception as e:
+            pass
+        return JsonResponse(ret)
+
 class KidsBookView(APIView):
 
     # 用于用户每日推荐
