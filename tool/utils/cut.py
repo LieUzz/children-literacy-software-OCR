@@ -7,8 +7,8 @@ import pytesseract
 # point = [700,420] # 的
 # point = [320,1320] # 中
 # point = [580,1320] # 国
-point = [330,775] # 在
-# point = [580,775] # 不
+# point = [330,775] # 在
+point = [580,775] # 不
 
 
 image_row = cv2.imread('/Users/zhengjiayu/DjangoProject/bishe/tool/static/word.png')
@@ -20,7 +20,7 @@ rows, cols, = image_row.shape[0:2]
 row1 = point[1]
 col1 = point[0]
 
-
+print(sp[0],sp[1])
 
 print(row1,col1)
 # image = image_row[650:900,200:700]
@@ -43,7 +43,8 @@ cv2.imwrite("/Users/zhengjiayu/DjangoProject/bishe/tool/static/zai.png",image_cu
 # cv2.imshow("img_bin", img_bin)
 # print(img_bin)
 
-code = pytesseract.image_to_string(image_cut, lang='chi_sim')
+code = pytesseract.image_to_string(image_cut, lang='chi_sim',
+        config='--psm 8 --oem 3 -c tessedit_char_whitelist=0123456789')
 print(code)
 # code_row = pytesseract.image_to_string(image_resize, lang='chi_sim')
 # print(code_row)

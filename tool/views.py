@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from rest_framework.views import APIView
 from urllib.request import Request, urlopen
 from django.core.files.base import ContentFile
-from tool.utils.division import my_division
+from tool.utils.division import my_division,cut
 from PIL import Image
 from . import models
 import json
@@ -421,18 +421,39 @@ class GetPiontView(APIView):
             print('X:',point_x)
             print('Y:', point_y)
             point = [0,0]
-            print(point)
-            img = cv2.imread("/home/OCR/tool/static/images.png")
-            imgo = cv2.imread("/home/OCR/tool/static/images.png", 0)
+            # print(point)
+            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
+            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
+            # img = cv2.imread("/home/OCR/media/images.png")
+            # imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print(point)
-            result = my_division(img, imgo, point)
-            word = pytesseract.image_to_string(result, lang='chi_sim')
+            ###########
+
+            image_cut = cut(img,int(point_x),int(point_y))
+            imageo_cut = cut(imgo, int(point_x), int(point_y))
+            # image = Image.fromarray(cv2.cvtColor(image_cut, cv2.COLOR_BGR2RGB))
+            # image.show()
+            #
+            #
+            # print('success')
+
+
+
+
+            result = my_division(image_cut, imageo_cut)
+            # image = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
+            # image.show()
+
+
+            print('success')
+
+            word = pytesseract.image_to_string(result, lang='chi_sim',
+                                               config='--psm 8 --oem 3 -c tessedit_char_whitelist=0123456789')
             print(word)
             if(len(word) == 0):
                 ret['code'] = 2000
-
 
             word_obj = models.Word.objects.filter(word=word).first()
             print(word_obj)
