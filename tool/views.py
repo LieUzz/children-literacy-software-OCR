@@ -437,7 +437,7 @@ class GetPiontView(APIView):
             # image.show()
             #
             #
-            # print('success')
+            print('success cut')
 
 
 
@@ -447,7 +447,7 @@ class GetPiontView(APIView):
             # image.show()
 
 
-            print('success')
+            print('success division')
 
             word = pytesseract.image_to_string(result, lang='chi_sim',
                                                config='--psm 8 --oem 3 -c tessedit_char_whitelist=0123456789')
