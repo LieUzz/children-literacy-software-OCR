@@ -428,7 +428,7 @@ class GetPiontView(APIView):
             # imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
-            print(point)
+            print('2 point:',point)
             ###########
 
             image_cut = cut(img,int(point_x),int(point_y))
