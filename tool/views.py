@@ -384,11 +384,19 @@ class BaiDuHanZiView(APIView):
 class OCRView(APIView):
     #用于ocr检测
     authentication_classes = []
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         ret = {'code': 1000, 'msg': None}
 
         try:
-            print(1)
+            img_row = request.FILES.get('images')
+            image_PIL = Image.open(ContentFile(img_row.read()))
+            image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            print(type(image))
+            sp = image.shape
+            print(sp)
+            cv2.imshow("row", image)
+
+            ret['msg'] = 'success'
 
         except Exception as e:
             pass
@@ -461,10 +469,13 @@ class GetImgOneView(APIView):
             img_row = request.FILES.get('images')
             ret['print'] = str(type(img_row))
             ret['len'] = str(len(img_row))
-            if os.path.exists('/home/OCR/tool/static/images.png'):
-                os.remove('/home/OCR/tool/static/images.png')
-                print('已删除图片')
+            # if os.path.exists('/home/OCR/media/images.png'):
+            #     os.remove('/home/OCR/media/images.png')
+            #     print('已删除图片')
 
+            if os.path.exists('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png'):
+                os.remove('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png')
+                print('已删除图片')
             # # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
             # image_PIL = Image.open(ContentFile(img_row.read()))
             # image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
@@ -481,11 +492,11 @@ class GetImgOneView(APIView):
             # 保存图片
             # 方法一
             # 服务端
-            default_storage.save('/home/OCR/tool/static/' + img_row.name,
-                                 ContentFile(img_row.read()))
-            # 本地
-            # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/static/' + img_row.name,
+            # default_storage.save('/home/OCR/tool/media/' + img_row.name,
             #                      ContentFile(img_row.read()))
+            # 本地
+            default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/media/' + img_row.name,
+                                 ContentFile(img_row.read()))
 
 
             # 方法二
