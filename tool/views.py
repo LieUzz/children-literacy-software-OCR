@@ -493,7 +493,7 @@ class GetImgOneView(APIView):
             # 保存图片
             # 方法一
             # 服务端
-            default_storage.save('/home/OCR/tool/media/' + img_row.name,
+            default_storage.save('/home/OCR/media/' + img_row.name,
                                  ContentFile(img_row.read()))
             # 本地
             # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/media/' + img_row.name,
