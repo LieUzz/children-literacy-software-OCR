@@ -443,8 +443,8 @@ class GetPiontView(APIView):
 
 
             result = my_division(image_cut, imageo_cut)
-            # image = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
-            # image.show()
+            image = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
+            image.show()
 
 
             print('success division')

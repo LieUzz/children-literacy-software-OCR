@@ -40,14 +40,14 @@ def cut(image,point_x,point_y):
     y = point_y
     x = point_x
     print(image.shape)
-    image_cut = image[y - 80:y + 80, x - 80:x + 80]
+    image_cut = image[y - 100:y + 100, x - 100:x + 100]
 
     return image_cut
 
 
 
 def my_division(img, imgo):
-    point = [80,80]
+    point = [100,100]
     # 不能这个操作，tesseract识别不了
     # rer, imgo = cv2.threshold(imgo, 200, 255, cv2.THRESH_BINARY)
 
