@@ -473,6 +473,7 @@ class GetImgOneView(APIView):
             #     os.remove('/home/OCR/media/images.png')
             #     print('已删除图片')
 
+
             if os.path.exists('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png'):
                 os.remove('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png')
                 print('已删除图片')
