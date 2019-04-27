@@ -433,8 +433,8 @@ class GetPiontView(APIView):
 
             image_cut = cut(img, int(point_x),int(point_y))
             imageo_cut = cut(imgo, int(point_x), int(point_y))
-            # image = Image.fromarray(cv2.cvtColor(image_cut, cv2.COLOR_BGR2RGB))
-            # image.show()
+            image = Image.fromarray(cv2.cvtColor(image_cut, cv2.COLOR_BGR2RGB))
+            image.show()
             #
             #
             print('success cut')
@@ -451,7 +451,7 @@ class GetPiontView(APIView):
 
             word = pytesseract.image_to_string(result, lang='chi_sim',
                                                config='--psm 8 --oem 3 -c tessedit_char_whitelist=0123456789')
-            print(word)
+            print('汉字：',word)
             if(len(word) == 0):
                 ret['code'] = 2000
 
