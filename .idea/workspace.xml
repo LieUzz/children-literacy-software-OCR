@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61322b10-2ea7-475a-8288-872ba8bcec99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bishe/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bishe/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="487" column="32" lean-forward="true" selection-start-line="487" selection-start-column="32" selection-end-line="487" selection-end-column="32" />
+            <state relative-caret-position="143">
+              <caret line="475" selection-start-line="475" selection-end-line="475" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#15091#17167#0" />
@@ -84,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bishe/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="133" column="13" lean-forward="true" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
+            <state relative-caret-position="251">
+              <caret line="144" column="13" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -193,8 +191,8 @@
         <option value="$PROJECT_DIR$/ocr_api/views.py" />
         <option value="$PROJECT_DIR$/ocr_api/models.py" />
         <option value="$PROJECT_DIR$/tool/utils/cut.py" />
-        <option value="$PROJECT_DIR$/tool/views.py" />
         <option value="$PROJECT_DIR$/bishe/settings.py" />
+        <option value="$PROJECT_DIR$/tool/views.py" />
       </list>
     </option>
   </component>
@@ -315,12 +313,12 @@
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
       <workItem from="1555739811413" duration="147254000" />
-      <workItem from="1556348243303" duration="2373000" />
+      <workItem from="1556348243303" duration="2676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="285462000" />
+    <option name="totallyTimeSpent" value="285765000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -347,7 +345,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.77671236" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.47534245" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32876712" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32876712" />
@@ -668,21 +666,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bishe/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="144" column="13" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="487" column="32" lean-forward="true" selection-start-line="487" selection-start-column="32" selection-end-line="487" selection-end-column="32" />
+        <state relative-caret-position="143">
+          <caret line="475" selection-start-line="475" selection-end-line="475" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#15091#17167#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bishe/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="133" column="13" lean-forward="true" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
         </state>
       </provider>
     </entry>

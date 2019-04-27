@@ -469,14 +469,14 @@ class GetImgOneView(APIView):
             img_row = request.FILES.get('images')
             ret['print'] = str(type(img_row))
             ret['len'] = str(len(img_row))
-            # if os.path.exists('/home/OCR/media/images.png'):
-            #     os.remove('/home/OCR/media/images.png')
-            #     print('已删除图片')
-
-
-            if os.path.exists('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png'):
-                os.remove('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png')
+            if os.path.exists('/home/OCR/media/images.png'):
+                os.remove('/home/OCR/media/images.png')
                 print('已删除图片')
+
+
+            # if os.path.exists('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png'):
+            #     os.remove('/Users/zhengjiayu/DjangoProject/bishe/media/origin9.png')
+            #     print('已删除图片')
             # # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
             # image_PIL = Image.open(ContentFile(img_row.read()))
             # image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
@@ -493,11 +493,11 @@ class GetImgOneView(APIView):
             # 保存图片
             # 方法一
             # 服务端
-            # default_storage.save('/home/OCR/tool/media/' + img_row.name,
-            #                      ContentFile(img_row.read()))
-            # 本地
-            default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/media/' + img_row.name,
+            default_storage.save('/home/OCR/tool/media/' + img_row.name,
                                  ContentFile(img_row.read()))
+            # 本地
+            # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/media/' + img_row.name,
+            #                      ContentFile(img_row.read()))
 
 
             # 方法二
