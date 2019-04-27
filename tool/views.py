@@ -386,7 +386,6 @@ class OCRView(APIView):
     authentication_classes = []
     def post(self, request, *args, **kwargs):
         ret = {'code': 1000, 'msg': None}
-
         try:
             img_row = request.FILES.get('images')
             image_PIL = Image.open(ContentFile(img_row.read()))
@@ -394,8 +393,11 @@ class OCRView(APIView):
             print(type(image))
             sp = image.shape
             print(sp)
+            word = pytesseract.image_to_string(image, lang='chi_sim',
+                                               config='--psm 8 --oem 3 -c tessedit_char_whitelist=0123456789')
 
             ret['msg'] = 'success'
+            ret['word'] = word
 
         except Exception as e:
             pass
