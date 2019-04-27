@@ -394,7 +394,6 @@ class OCRView(APIView):
             print(type(image))
             sp = image.shape
             print(sp)
-            cv2.imshow("row", image)
 
             ret['msg'] = 'success'
 
@@ -422,10 +421,10 @@ class GetPiontView(APIView):
             print('Y:', point_y)
             point = [0,0]
             # print(point)
-            # img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
-            # imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
-            img = cv2.imread("/home/OCR/media/images.png")
-            imgo = cv2.imread("/home/OCR/media/images.png", 0)
+            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
+            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
+            # img = cv2.imread("/home/OCR/media/images.png")
+            # imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print('2 point:',point)
@@ -454,6 +453,7 @@ class GetPiontView(APIView):
             print('汉字：',word)
             if(len(word) == 0):
                 ret['code'] = 2000
+                print('无汉字')
 
             word_obj = models.Word.objects.filter(word=word).first()
             print(word_obj)

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="61322b10-2ea7-475a-8288-872ba8bcec99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/media/images.png" beforeDir="false" afterPath="$PROJECT_DIR$/media/images.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/utils/division.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/utils/division.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,15 +61,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="461" column="24" lean-forward="true" selection-start-line="461" selection-start-column="24" selection-end-line="461" selection-end-column="24" />
+            <state relative-caret-position="248">
+              <caret line="395" column="21" selection-start-line="395" selection-start-column="21" selection-end-line="395" selection-end-column="21" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#589#957#0" />
                 <element signature="e#3567#5730#0" />
                 <element signature="e#5761#8502#0" />
                 <element signature="e#8539#14454#0" />
-                <element signature="e#14484#15056#0" />
+                <element signature="e#15091#17167#0" />
                 <element signature="e#17203#19223#0" />
               </folding>
             </state>
@@ -104,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tool/utils/division.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-891">
-              <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+            <state relative-caret-position="-781">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -165,8 +164,8 @@
         <option value="$PROJECT_DIR$/ocr_api/models.py" />
         <option value="$PROJECT_DIR$/bishe/settings.py" />
         <option value="$PROJECT_DIR$/tool/utils/cut.py" />
-        <option value="$PROJECT_DIR$/tool/views.py" />
         <option value="$PROJECT_DIR$/tool/utils/division.py" />
+        <option value="$PROJECT_DIR$/tool/views.py" />
       </list>
     </option>
   </component>
@@ -283,12 +282,12 @@
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
       <workItem from="1555739811413" duration="147254000" />
-      <workItem from="1556348243303" duration="11974000" />
+      <workItem from="1556348243303" duration="13581000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="295063000" />
+    <option name="totallyTimeSpent" value="296670000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -303,7 +302,7 @@
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17596567" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17596567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32876712" />
@@ -316,7 +315,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.34383562" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.34383562" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32876712" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32876712" />
@@ -636,8 +635,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/utils/division.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-891">
-          <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+        <state relative-caret-position="-781">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -646,15 +645,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="461" column="24" lean-forward="true" selection-start-line="461" selection-start-column="24" selection-end-line="461" selection-end-column="24" />
+        <state relative-caret-position="248">
+          <caret line="395" column="21" selection-start-line="395" selection-start-column="21" selection-end-line="395" selection-end-column="21" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#589#957#0" />
             <element signature="e#3567#5730#0" />
             <element signature="e#5761#8502#0" />
             <element signature="e#8539#14454#0" />
-            <element signature="e#14484#15056#0" />
+            <element signature="e#15091#17167#0" />
             <element signature="e#17203#19223#0" />
           </folding>
         </state>
