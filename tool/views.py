@@ -414,8 +414,8 @@ class GetPiontView(APIView):
             print('Y:', point_y)
             point = [0,0]
             print(point)
-            img = cv2.imread("/home/OCR/tool/statics/images.png")
-            imgo = cv2.imread("/home/OCR/tool/statics/images.png", 0)
+            img = cv2.imread("/home/OCR/tool/static/images.png")
+            imgo = cv2.imread("/home/OCR/tool/static/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print(point)
@@ -461,8 +461,8 @@ class GetImgOneView(APIView):
             img_row = request.FILES.get('images')
             ret['print'] = str(type(img_row))
             ret['len'] = str(len(img_row))
-            if os.path.exists('/home/OCR/tool/statics/images.png'):
-                os.remove('/home/OCR/tool/statics/images.png')
+            if os.path.exists('/home/OCR/tool/static/images.png'):
+                os.remove('/home/OCR/tool/static/images.png')
                 print('已删除图片')
 
             # # 将image转化成PILLOW格式，然后再由PILLOW转化成opencv格式
@@ -481,10 +481,10 @@ class GetImgOneView(APIView):
             # 保存图片
             # 方法一
             # 服务端
-            default_storage.save('/home/OCR/tool/statics/' + img_row.name,
+            default_storage.save('/home/OCR/tool/static/' + img_row.name,
                                  ContentFile(img_row.read()))
             # 本地
-            # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/statics/' + img_row.name,
+            # default_storage.save('/Users/zhengjiayu/DjangoProject/bishe/tool/static/' + img_row.name,
             #                      ContentFile(img_row.read()))
 
 
