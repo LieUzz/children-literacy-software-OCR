@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from urllib.request import Request, urlopen
 from django.core.files.base import ContentFile
 from tool.utils.division import my_division,cut
+from tool.utils.xinhua import my_xinhua
 from PIL import Image
 from . import models
 import json
@@ -388,23 +389,34 @@ class OCRView(APIView):
     def post(self, request, *args, **kwargs):
         ret = {'code': 1000, 'msg': None}
         try:
-            img_row = request.FILES.get('images')
-            image_PIL = Image.open(ContentFile(img_row.read()))
-            image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
-            print(type(image))
-            sp = image.shape
-            print(sp)
-            word = pytesseract.image_to_string(image, lang='chi_sim', config='--psm 8 ')
+            word = request._request.POST.get('word')
+            word_obj = models.Word.objects.filter(word=word).first()
+            print(word_obj)
+            if not word_obj:
+                pinyin, bihua, bushou, yisi1, yisi2, yisi3 = my_xinhua(word)
+                models.Word.objects.create(word=word, gif='', pinyin=pinyin,
+                                           bihua=bihua, bushou=bushou, yisi1=yisi1,
+                                           yisi2=yisi2, yisi3=yisi3)
+                word_obj = models.Word.objects.filter(word=word).first()
+            print(word_obj.pinyin)
 
-            word = re.sub("[A-Za-z0-9\!\%\[\]\,\。]", "", word)
-            pat = re.compile(r'[\u4e00-\u9fa5]+')
-            result = pat.findall(word)
-            print(result[0][0])
-            word = result[0][0]
-            print('正则后汉字：', word)
-            print('正则后汉字长度：', len(word))
-            ret['msg'] = 'success'
-            ret['word'] = result[0]
+            # img_row = request.FILES.get('images')
+            # image_PIL = Image.open(ContentFile(img_row.read()))
+            # image = cv2.cvtColor(numpy.asarray(image_PIL), cv2.COLOR_RGB2BGR)
+            # print(type(image))
+            # sp = image.shape
+            # print(sp)
+            # word = pytesseract.image_to_string(image, lang='chi_sim', config='--psm 8 ')
+            #
+            # word = re.sub("[A-Za-z0-9\!\%\[\]\,\。]", "", word)
+            # pat = re.compile(r'[\u4e00-\u9fa5]+')
+            # result = pat.findall(word)
+            # print(result[0][0])
+            # word = result[0][0]
+            # print('正则后汉字：', word)
+            # print('正则后汉字长度：', len(word))
+            # ret['msg'] = 'success'
+            # ret['word'] = result[0]
 
         except Exception as e:
             pass
@@ -443,10 +455,10 @@ class GetPiontView(APIView):
             print('Y:', point_y)
             point = [0,0]
             # print(point)
-            # img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
-            # imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
-            img = cv2.imread("/home/OCR/media/images.png")
-            imgo = cv2.imread("/home/OCR/media/images.png", 0)
+            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
+            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
+            # img = cv2.imread("/home/OCR/media/images.png")
+            # imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print('2 point:',point)
@@ -454,13 +466,11 @@ class GetPiontView(APIView):
 
             image_cut = cut(img, int(point_x),int(point_y))
             imageo_cut = cut(imgo, int(point_x), int(point_y))
-            # image = Image.fromarray(cv2.cvtColor(image_cut, cv2.COLOR_BGR2RGB))
-            # image.show()
+            image = Image.fromarray(cv2.cvtColor(image_cut, cv2.COLOR_BGR2RGB))
+            image.show()
             #
             #
             print('success cut')
-
-
 
 
             result = my_division(image_cut, imageo_cut)
@@ -488,6 +498,14 @@ class GetPiontView(APIView):
 
             word_obj = models.Word.objects.filter(word=word).first()
             print(word_obj)
+            # 添加新华字典的词库
+            # if not word_obj:
+            #     pinyin,bihua,bushou,yisi1,yisi2,yisi3 = my_xinhua(word)
+            #     models.Word.objects.create(word=word,gif='',pinyin=pinyin,
+            #                                bihua=bihua,bushou=bushou,yisi1=yisi1,
+            #                                yisi2=yisi2,yisi3=yisi3)
+            #     word_obj = models.Word.objects.filter(word=word).first()
+
             wordexit = ocr_api.models.UserWordHistory.objects.filter(user_id=user_obj.id, wordinfo_id=word_obj.id).first()
             print(123)
             if wordexit:
@@ -506,6 +524,7 @@ class GetPiontView(APIView):
             else:
                 print('create')
                 ocr_api.models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word_obj.id)
+
 
             ret['word'] = word_obj.word
             ret['gif'] = word_obj.gif

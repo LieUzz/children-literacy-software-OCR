@@ -60,7 +60,7 @@ class WordInfoToolView(APIView):
             # word = request._request.GET.get('word')
             word = tool.models.Word.objects.all()
 
-            for i in range(566, len(word)):
+            for i in range(1161, len(word)):
                 print(i)
                 if len(word[i].gif) == 0:
 
@@ -72,8 +72,8 @@ class WordInfoToolView(APIView):
                     word_zi = word[i].word
                     word_url = urllib.parse.quote(word[i].word)
                     #聚合数据的新华字典调用
-                    # b58d89a05c7170a092bcc2ef8feb5c3b
-                    url = 'http://v.juhe.cn/xhzd/query?key=c98072ebc854fe0849d07ee107330560&word=' + str(word_url)
+                    # b58d89a05c7170a092bcc2ef8feb5c3b/c98072ebc854fe0849d07ee107330560
+                    url = 'http://v.juhe.cn/xhzd/query?key=b58d89a05c7170a092bcc2ef8feb5c3b&word=' + str(word_url)
                     # 包装头部
                     firefox_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
                     # 构建请求

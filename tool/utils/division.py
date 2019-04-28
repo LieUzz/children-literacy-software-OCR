@@ -52,7 +52,11 @@ def my_division(img, imgo):
     # rer, imgo = cv2.threshold(imgo, 200, 255, cv2.THRESH_BINARY)
 
     # print('my point',point)
-    imgo = cv2.bitwise_not(imgo)
+    print('in')
+    # imgo = cv2.cvtColor(imgo, cv2.COLOR_BGR2GRAY)
+    imgo = cv2.bitwise_not(imgo)  # 黑底白字
+    # imgo = cv2.bitwise_not(imgo)
+    print('imgo_COLOR_BGR2GRAY')
     # cv2.imshow("binary image", imgo)
 
 
@@ -74,7 +78,8 @@ def my_division(img, imgo):
     # cv2.imshow("binary image", img_bin)
 
     result = segment_on_dt(img, img_bin)
-
+    # image = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
+    # image.show()
 
     # 这个result图片 黑底，其他像素的每一块代表一个字
     # 即有多少种不同于0和255的像素值，就有多少块区域
@@ -110,9 +115,10 @@ def my_division(img, imgo):
 
     # 用来调整大小
     # imgo = cv2.resize(imgo, (64,64))
+    rer, imgo = cv2.threshold(imgo, 130, 255, cv2.THRESH_BINARY)
     imgo = cv2.bitwise_not(imgo)
-    # image = Image.fromarray(cv2.cvtColor(imgo, cv2.COLOR_BGR2RGB))
-    # image.show()
+    image = Image.fromarray(cv2.cvtColor(imgo, cv2.COLOR_BGR2RGB))
+    image.show()
 
     return imgo
     ##########################################################################

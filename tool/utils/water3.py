@@ -32,7 +32,7 @@ img = cv2.resize(img,(150,150))
 imgo = img.copy()
 imgo = cv2.cvtColor(imgo, cv2.COLOR_BGR2GRAY)
 imgo = cv2.bitwise_not(imgo) # 黑底白字
-# cv2.imshow("传进来的图片", imgo)
+cv2.imshow("imgo", imgo)
 
 # 将汉字进行膨胀操作,这个膨胀迭代的次数，再程序中写死了
 # 要求我们拍的照片最终的大小在150*150左右，其中图片中的字，要求占大部分
