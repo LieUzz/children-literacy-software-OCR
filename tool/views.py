@@ -486,6 +486,8 @@ class GetPiontView(APIView):
             if (len(word) == 0):
                 ret['code'] = 2000
                 print('无汉字')
+                request_obj.time = datetime.now()
+                request_obj.save()
                 return JsonResponse(ret)
 
             word = re.sub("[A-Za-z0-9\!\?\%\[\]\,\。]", "", word)
@@ -518,6 +520,8 @@ class GetPiontView(APIView):
                     if int(timegap) < 10:
                         ret['code'] = 2001
                         print('同个汉字')
+                        request_obj.time = datetime.now()
+                        request_obj.save()
                         return JsonResponse(ret)
                 wordexit.time = datetime.now()
                 wordexit.save()
