@@ -422,10 +422,10 @@ class GetPiontView(APIView):
             print('Y:', point_y)
             point = [0,0]
             # print(point)
-            # img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
-            # imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
-            img = cv2.imread("/home/OCR/media/images.png")
-            imgo = cv2.imread("/home/OCR/media/images.png", 0)
+            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
+            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
+            # img = cv2.imread("/home/OCR/media/images.png")
+            # imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print('2 point:',point)
@@ -433,8 +433,8 @@ class GetPiontView(APIView):
 
             image_cut = cut(img, int(point_x),int(point_y))
             imageo_cut = cut(imgo, int(point_x), int(point_y))
-            image = Image.fromarray(cv2.cvtColor(image_cut, cv2.COLOR_BGR2RGB))
-            image.show()
+            # image = Image.fromarray(cv2.cvtColor(image_cut, cv2.COLOR_BGR2RGB))
+            # image.show()
             #
             #
             print('success cut')
@@ -443,8 +443,8 @@ class GetPiontView(APIView):
 
 
             result = my_division(image_cut, imageo_cut)
-            image = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
-            image.show()
+            # image = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
+            # image.show()
 
 
             print('success division')
