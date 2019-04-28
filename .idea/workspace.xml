@@ -45,11 +45,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-175">
-              <caret line="443" lean-forward="true" selection-start-line="443" selection-end-line="443" />
+            <state relative-caret-position="286">
+              <caret line="470" column="39" selection-start-line="470" selection-start-column="39" selection-end-line="470" selection-end-column="39" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#589#957#0" />
@@ -62,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/ocr_api_userwordhistory">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -279,12 +279,12 @@
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
       <workItem from="1555739811413" duration="147254000" />
-      <workItem from="1556348243303" duration="18700000" />
+      <workItem from="1556348243303" duration="19580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301789000" />
+    <option name="totallyTimeSpent" value="302669000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -312,7 +312,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.063013695" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.28219178" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32876712" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32876712" />
@@ -640,10 +640,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/ocr_api_userwordhistory">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-175">
-          <caret line="443" lean-forward="true" selection-start-line="443" selection-end-line="443" />
+        <state relative-caret-position="286">
+          <caret line="470" column="39" selection-start-line="470" selection-start-column="39" selection-end-line="470" selection-end-column="39" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#589#957#0" />
@@ -652,13 +659,6 @@
             <element signature="e#8539#14454#0" />
             <element signature="e#17203#19223#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/ocr_api_userwordhistory">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

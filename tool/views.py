@@ -396,8 +396,15 @@ class OCRView(APIView):
             print(sp)
             word = pytesseract.image_to_string(image, lang='chi_sim', config='--psm 8 ')
 
+            word = re.sub("[A-Za-z0-9\!\%\[\]\,\。]", "", word)
+            pat = re.compile(r'[\u4e00-\u9fa5]+')
+            result = pat.findall(word)
+            print(result[0][0])
+            word = result[0][0]
+            print('正则后汉字：', word)
+            print('正则后汉字长度：', len(word))
             ret['msg'] = 'success'
-            ret['word'] = word
+            ret['word'] = result[0]
 
         except Exception as e:
             pass
@@ -452,10 +459,20 @@ class GetPiontView(APIView):
 
             word = pytesseract.image_to_string(result, lang='chi_sim',config='--psm 8')
             print('汉字：',word)
-            if(len(word) == 0):
+            print('汉字长度：',len(word))
+            if (len(word) == 0):
                 ret['code'] = 2000
                 print('无汉字')
                 return JsonResponse(ret)
+
+            word = re.sub("[A-Za-z0-9\!\?\%\[\]\,\。]", "", word)
+            pat = re.compile(r'[\u4e00-\u9fa5]+')
+            result = pat.findall(word)
+            word =result[0][0]
+            print('正则后汉字：',word)
+            print('正则后汉字长度：', len(word))
+
+
             word_obj = models.Word.objects.filter(word=word).first()
             print(word_obj)
             wordexit = ocr_api.models.UserWordHistory.objects.filter(user_id=user_obj.id, wordinfo_id=word_obj.id).first()
