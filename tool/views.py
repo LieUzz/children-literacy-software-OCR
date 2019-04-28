@@ -393,8 +393,7 @@ class OCRView(APIView):
             print(type(image))
             sp = image.shape
             print(sp)
-            word = pytesseract.image_to_string(image, lang='chi_sim',
-                                               config='--psm 8 --oem 3 -c tessedit_char_whitelist=0123456789')
+            word = pytesseract.image_to_string(image, lang='chi_sim')
 
             ret['msg'] = 'success'
             ret['word'] = word
@@ -423,10 +422,10 @@ class GetPiontView(APIView):
             print('Y:', point_y)
             point = [0,0]
             # print(point)
-            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
-            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
-            # img = cv2.imread("/home/OCR/media/images.png")
-            # imgo = cv2.imread("/home/OCR/media/images.png", 0)
+            # img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
+            # imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
+            img = cv2.imread("/home/OCR/media/images.png")
+            imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print('2 point:',point)
