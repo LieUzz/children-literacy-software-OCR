@@ -530,6 +530,14 @@ class GetPiontView(APIView):
                 print('create')
                 print('用户ID', user_obj.id)
                 print('汉字ID', word_obj.id)
+                ret['word'] = word_obj.word
+                ret['gif'] = word_obj.gif
+                ret['pinyin'] = word_obj.pinyin
+                ret['bushou'] = word_obj.bushou
+                ret['bihua'] = word_obj.bihua
+                ret['yisi1'] = word_obj.yisi1
+                ret['yisi2'] = word_obj.yisi2
+                ret['yisi3'] = word_obj.yisi3
                 ocr_api.models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word_obj.id)
 
             print('all success')
