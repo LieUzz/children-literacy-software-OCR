@@ -486,7 +486,7 @@ class GetPiontView(APIView):
             if (len(word) == 0):
                 ret['code'] = 2000
                 print('无汉字')
-                request_obj.time = datetime.now()
+                request_obj.time = datetime.now() + timedelta(minutes=-3)
                 request_obj.save()
                 return JsonResponse(ret)
 
@@ -521,7 +521,7 @@ class GetPiontView(APIView):
                     if int(timegap) < 7:
                         ret['code'] = 2001
                         print('同个汉字')
-                        request_obj.time = datetime.now()
+                        request_obj.time = datetime.now() + timedelta(minutes=-3)
                         request_obj.save()
                         return JsonResponse(ret)
                 wordexit.time = datetime.now()
