@@ -539,8 +539,8 @@ class GetPiontView(APIView):
                 ret['yisi2'] = word_obj.yisi2
                 ret['yisi3'] = word_obj.yisi3
                 time_now = datetime.now()
-                print('当前时间:',time)
-                ocr_api.models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word_obj.id,time=time_now)
+                print('当前时间:',time_now)
+                ocr_api.models.UserWordHistory.objects.update_or_create(user_id=user_obj.id, wordinfo_id=word_obj.id,time=time_now)
                 print('create success')
 
             print('all success')
