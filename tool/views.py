@@ -499,7 +499,8 @@ class GetPiontView(APIView):
 
 
             word_obj = models.Word.objects.filter(word=word).first()
-            print(word_obj)
+            print('汉字是否存在',word_obj)
+
             # 添加新华字典的词库
             # if not word_obj:
             #     pinyin,bihua,bushou,yisi1,yisi2,yisi3 = my_xinhua(word)
@@ -517,7 +518,7 @@ class GetPiontView(APIView):
                     print('相等')
                     timegap = time.mktime(datetime.now().timetuple()) - time.mktime(wordexit.time.timetuple())
                     print(timegap)
-                    if int(timegap) < 10:
+                    if int(timegap) < 7:
                         ret['code'] = 2001
                         print('同个汉字')
                         request_obj.time = datetime.now()
@@ -527,9 +528,11 @@ class GetPiontView(APIView):
                 wordexit.save()
             else:
                 print('create')
+                print('用户ID', user_obj.id)
+                print('汉字ID', word_obj.id)
                 ocr_api.models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word_obj.id)
 
-
+            print('all success')
             ret['word'] = word_obj.word
             ret['gif'] = word_obj.gif
             ret['pinyin'] = word_obj.pinyin
