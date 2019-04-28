@@ -46,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="963">
-              <caret line="542" column="71" selection-start-line="542" selection-start-column="55" selection-end-line="542" selection-end-column="71" />
+            <state relative-caret-position="306">
+              <caret line="522" column="37" lean-forward="true" selection-start-line="522" selection-start-column="37" selection-end-line="522" selection-end-column="37" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#645#1013#0" />
@@ -135,8 +135,8 @@
         <option value="$PROJECT_DIR$/tool/utils/water3.py" />
         <option value="$PROJECT_DIR$/tool/utils/division.py" />
         <option value="$PROJECT_DIR$/ocr_api/models.py" />
-        <option value="$PROJECT_DIR$/tool/views.py" />
         <option value="$PROJECT_DIR$/bishe/settings.py" />
+        <option value="$PROJECT_DIR$/tool/views.py" />
       </list>
     </option>
   </component>
@@ -268,7 +268,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311890000" />
+    <option name="totallyTimeSpent" value="312136000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -281,7 +281,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17596567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -638,8 +637,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="963">
-          <caret line="542" column="71" selection-start-line="542" selection-start-column="55" selection-end-line="542" selection-end-column="71" />
+        <state relative-caret-position="306">
+          <caret line="522" column="37" lean-forward="true" selection-start-line="522" selection-start-column="37" selection-end-line="522" selection-end-column="37" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#645#1013#0" />

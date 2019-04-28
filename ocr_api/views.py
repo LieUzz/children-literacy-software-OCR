@@ -35,7 +35,7 @@ class WordInfoView(APIView):
                 wordexit.save()
             else:
                 print('create')
-                models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word.id)
+                models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word.id,time=datetime.now())
 
             ret['word'] = word.word
             ret['gif'] = word.gif
