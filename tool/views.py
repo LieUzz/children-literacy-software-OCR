@@ -18,6 +18,7 @@ import usr_api.models
 import pytesseract
 import cv2
 from datetime import *
+import time
 import numpy
 import os
 
@@ -422,10 +423,10 @@ class GetPiontView(APIView):
             print('Y:', point_y)
             point = [0,0]
             # print(point)
-            # img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
-            # imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
-            img = cv2.imread("/home/OCR/media/images.png")
-            imgo = cv2.imread("/home/OCR/media/images.png", 0)
+            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
+            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
+            # img = cv2.imread("/home/OCR/media/images.png")
+            # imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print('2 point:',point)
@@ -454,12 +455,22 @@ class GetPiontView(APIView):
             if(len(word) == 0):
                 ret['code'] = 2000
                 print('无汉字')
-
+                return JsonResponse(ret)
             word_obj = models.Word.objects.filter(word=word).first()
             print(word_obj)
             wordexit = ocr_api.models.UserWordHistory.objects.filter(user_id=user_obj.id, wordinfo_id=word_obj.id).first()
             print(123)
             if wordexit:
+                print('exist')
+                wordtmp = ocr_api.models.UserWordHistory.objects.filter(user_id=user_obj.id).order_by('-time').first()
+                if int(wordexit.wordinfo_id) == int(wordtmp.wordinfo_id):
+                    print('相等')
+                    timegap = time.mktime(datetime.now().timetuple()) - time.mktime(wordexit.time.timetuple())
+                    print(timegap)
+                    if int(timegap) < 5:
+                        ret['code'] = 2001
+                        print('同个汉字')
+                        return JsonResponse(ret)
                 wordexit.time = datetime.now()
                 wordexit.save()
             else:

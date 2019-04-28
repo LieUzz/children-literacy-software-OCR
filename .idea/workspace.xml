@@ -46,22 +46,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="220" lean-forward="true" selection-start-line="220" selection-end-line="220" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="451" column="70" selection-start-line="451" selection-start-column="70" selection-end-line="451" selection-end-column="70" />
+            <state relative-caret-position="-175">
+              <caret line="443" lean-forward="true" selection-start-line="443" selection-end-line="443" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <element signature="e#589#957#0" />
@@ -74,14 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/utils/water3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="30" selection-start-line="30" selection-end-line="30" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/ocr_api_userwordhistory">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -93,18 +78,6 @@
               <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/utils/division.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="122" column="82" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="82" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -190,6 +163,11 @@
             <path>
               <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
               <item name="bishe" type="462c0819:PsiDirectoryNode" />
+              <item name="book_api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bishe" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -207,6 +185,16 @@
               <item name="bishe" type="462c0819:PsiDirectoryNode" />
               <item name="tool" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bishe" type="462c0819:PsiDirectoryNode" />
+              <item name="usr_api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bishe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bishe" type="462c0819:PsiDirectoryNode" />
+              <item name="word_api" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -291,12 +279,12 @@
       <workItem from="1555641630707" duration="18513000" />
       <workItem from="1555676717295" duration="4708000" />
       <workItem from="1555739811413" duration="147254000" />
-      <workItem from="1556348243303" duration="15766000" />
+      <workItem from="1556348243303" duration="18700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298855000" />
+    <option name="totallyTimeSpent" value="301789000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -309,6 +297,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17596567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -323,7 +312,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.34383562" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.063013695" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32876712" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32876712" />
@@ -339,39 +328,12 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/api_basewords">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/utils/origin2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/utils/origin3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/ocr_api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/word_api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#254#1484#0" />
-            <element signature="e#1524#2428#0" />
-            <element signature="e#2468#3476#0" />
-            <element signature="e#3512#4521#0" />
           </folding>
         </state>
       </provider>
@@ -472,16 +434,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usr_api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/book_api/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -498,24 +450,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/book_api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="359" column="1" lean-forward="true" selection-start-line="359" selection-start-column="1" selection-end-line="359" selection-end-column="1" />
-          <folding>
-            <element signature="e#353#1599#0" />
-            <element signature="e#1640#2182#0" />
-            <element signature="e#2214#3608#0" />
-            <element signature="e#3644#6499#0" />
-            <element signature="e#6538#7477#0" />
-            <element signature="e#7519#8501#0" />
-            <element signature="e#8608#9471#0" />
-            <element signature="e#8537#11004#0" />
-            <element signature="e#11038#11722#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -557,13 +491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/ocr_api_userwordhistory">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -621,16 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="220" lean-forward="true" selection-start-line="220" selection-end-line="220" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool/utils/division.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -651,10 +568,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ocr_api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1092">
+          <caret line="117" column="97" selection-start-line="117" selection-start-column="90" selection-end-line="117" selection-end-column="97" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book_api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-567">
+          <caret line="359" column="1" lean-forward="true" selection-start-line="359" selection-start-column="1" selection-end-line="359" selection-end-column="1" />
+          <folding>
+            <element signature="e#353#1599#0" />
+            <element signature="e#1640#2182#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usr_api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3582">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/word_api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#254#1484#0" />
+            <element signature="e#1524#2428#0" />
+            <element signature="e#2468#3476#0" />
+            <element signature="e#3512#4521#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usr_api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/word_api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book_api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="451" column="70" selection-start-line="451" selection-start-column="70" selection-end-line="451" selection-end-column="70" />
+        <state relative-caret-position="-175">
+          <caret line="443" lean-forward="true" selection-start-line="443" selection-end-line="443" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <element signature="e#589#957#0" />
@@ -663,6 +652,13 @@
             <element signature="e#8539#14454#0" />
             <element signature="e#17203#19223#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://98f0e992-cff5-4fd6-8e0c-4b349b95dc88/schema/bishe_db/table/ocr_api_userwordhistory">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
