@@ -424,16 +424,29 @@ class GetPiontView(APIView):
             username = request._request.GET.get('username')
             user_obj = usr_api.models.UserInfo.objects.filter(username=username).first()
             print(user_obj)
+            request_obj = models.RequestTimeGap.objects.filter(user_id=user_obj.id).first()
+            if request_obj:
+                print('已存在请求')
+                requestgap = time.mktime(datetime.now().timetuple())-time.mktime(request_obj.time.timetuple())
+                if requestgap < 5:
+                    print('请求过于频繁')
+                    ret['code'] = 2002
+                    return JsonResponse(ret)
+                request_obj.time = datetime.now()
+                request_obj.save()
+            else:
+                print('新建请求时间')
+                models.RequestTimeGap.objects.create(user_id=user_obj.id)
 
             # print(type(point_x))
             print('X:',point_x)
             print('Y:', point_y)
             point = [0,0]
             # print(point)
-            # img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
-            # imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
-            img = cv2.imread("/home/OCR/media/images.png")
-            imgo = cv2.imread("/home/OCR/media/images.png", 0)
+            img = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png")
+            imgo = cv2.imread("/Users/zhengjiayu/DjangoProject/bishe/media/images.png", 0)
+            # img = cv2.imread("/home/OCR/media/images.png")
+            # imgo = cv2.imread("/home/OCR/media/images.png", 0)
             point[0] = int(point_x)
             point[1] = int(point_y)
             print('2 point:',point)
@@ -484,7 +497,7 @@ class GetPiontView(APIView):
                     print('相等')
                     timegap = time.mktime(datetime.now().timetuple()) - time.mktime(wordexit.time.timetuple())
                     print(timegap)
-                    if int(timegap) < 5:
+                    if int(timegap) < 10:
                         ret['code'] = 2001
                         print('同个汉字')
                         return JsonResponse(ret)

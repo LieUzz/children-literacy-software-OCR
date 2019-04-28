@@ -1,4 +1,5 @@
 from django.db import models
+from usr_api.models import UserInfo
 
 # Create your models here.
 
@@ -14,3 +15,7 @@ class Word(models.Model):
     yisi1 = models.CharField(max_length=640, default='')
     yisi2 = models.CharField(max_length=640, default='')
     yisi3 = models.CharField(max_length=640, default='')
+
+class RequestTimeGap(models.Model):
+    user = models.ForeignKey(UserInfo, on_delete=models.DO_NOTHING)
+    time = models.DateTimeField(auto_now=True)
