@@ -449,8 +449,7 @@ class GetPiontView(APIView):
 
             print('success division')
 
-            word = pytesseract.image_to_string(result, lang='chi_sim',
-                                               config='--psm 8 --oem 3 -c tessedit_char_whitelist=0123456789')
+            word = pytesseract.image_to_string(result, lang='chi_sim',config='--psm 8')
             print('汉字：',word)
             if(len(word) == 0):
                 ret['code'] = 2000
