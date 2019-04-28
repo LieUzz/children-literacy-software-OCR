@@ -393,7 +393,7 @@ class OCRView(APIView):
             print(type(image))
             sp = image.shape
             print(sp)
-            word = pytesseract.image_to_string(image, lang='chi_sim')
+            word = pytesseract.image_to_string(image, lang='chi_sim', config='--psm 8 ')
 
             ret['msg'] = 'success'
             ret['word'] = word
