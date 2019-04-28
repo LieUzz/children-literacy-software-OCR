@@ -541,6 +541,7 @@ class GetPiontView(APIView):
                 create = ocr_api.models.UserWordHistory.objects.create(user_id=user_obj.id, wordinfo_id=word_obj.id)
                 create.time = datetime.now()
                 create.save()
+                print('create success')
 
             print('all success')
             ret['word'] = word_obj.word
