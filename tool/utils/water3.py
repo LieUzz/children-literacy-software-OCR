@@ -7,28 +7,35 @@ import pytesseract
 def segment_on_dt(a, img):
     border = cv2.dilate(img, None, iterations=4)
     border = border - cv2.erode(border, None)
+    cv2.imshow("border", border)
     dt = cv2.distanceTransform(img, 2, 3)
     # 用plt查看图片，可以看出来具体变化
-    plt.figure("距离场图片")
-    plt.imshow(dt,cmap ='gray')
+    # plt.figure("距离场图片")
+    # plt.imshow(dt,cmap ='gray')
     # plt.show()
     dt = ((dt - dt.min()) / (dt.max() - dt.min()) * 255).astype(numpy.uint8)
+    cv2.imshow("dt", dt)
     _, dt = cv2.threshold(dt, 180, 255, cv2.THRESH_BINARY)
+
     lbl, ncc = label(dt)
     lbl = lbl * (255 / (ncc + 1))
     lbl[border == 255] = 255
     lbl = lbl.astype(numpy.int32)
     cv2.watershed(a, lbl)
+
+
     lbl[lbl == -1] = 0
     lbl = lbl.astype(numpy.uint8)
+    cv2.imshow("water", lbl)
     return 255 - lbl
 
 # 读进来的图片要求是 白底黑字
 img = cv2.imread("./origin17.png")
+cv2.imshow("img", img)
 # print(type(img))
 # 重置图片大小，在后续的操作中，一些操作的范围是写死的，
 # 改不了了，如果图片大小不一样，操作得到的结果会不理想
-img = cv2.resize(img,(150,150))
+# img = cv2.resize(img,(150,150))
 imgo = img.copy()
 imgo = cv2.cvtColor(imgo, cv2.COLOR_BGR2GRAY)
 imgo = cv2.bitwise_not(imgo) # 黑底白字

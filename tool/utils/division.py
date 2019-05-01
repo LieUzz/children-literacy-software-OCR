@@ -16,6 +16,8 @@ def segment_on_dt(a, img):
     # 获得的边界 中间一圈像素值为0的
     # border = border - tmp
     border = cv2.dilate(img, None, iterations=4)
+    image = Image.fromarray(cv2.cvtColor(border, cv2.COLOR_BGR2RGB))
+    image.show()
 
     border = border - cv2.erode(border, None)
     dt = cv2.distanceTransform(img, 2, 3)
@@ -62,11 +64,15 @@ def my_division(img, imgo):
 
     # 将汉字进行膨胀操作
     img = cv2.erode(img, None, iterations=15)
+    image = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    image.show()
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     _, img_bin = cv2.threshold(img_gray, 0, 255,
                                cv2.THRESH_OTSU)
     img_bin = cv2.bitwise_not(img_bin)
+    image = Image.fromarray(cv2.cvtColor(img_bin, cv2.COLOR_BGR2RGB))
+    image.show()
 
     # cv2.imshow("binary image", img_bin)
     # 上面这个img_bin是黑底白字，而且是经过膨胀过的
@@ -78,8 +84,7 @@ def my_division(img, imgo):
     # cv2.imshow("binary image", img_bin)
 
     result = segment_on_dt(img, img_bin)
-    # image = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
-    # image.show()
+    # cv2.imshow("binary image", result)
 
     # 这个result图片 黑底，其他像素的每一块代表一个字
     # 即有多少种不同于0和255的像素值，就有多少块区域
@@ -117,8 +122,7 @@ def my_division(img, imgo):
     # imgo = cv2.resize(imgo, (64,64))
     rer, imgo = cv2.threshold(imgo, 130, 255, cv2.THRESH_BINARY)
     imgo = cv2.bitwise_not(imgo)
-    image = Image.fromarray(cv2.cvtColor(imgo, cv2.COLOR_BGR2RGB))
-    image.show()
+    # cv2.imshow("binary image", imgo)
 
     return imgo
     ##########################################################################
@@ -132,9 +136,9 @@ if __name__ == '__main__':
     # _, imgo = cv2.threshold(imgo, 190, 255, cv2.THRESH_BINARY)
     # cv2.imshow("binary image", imgo)
     # 假设这个点是point[25,25], 二维数组
-    point = [240, 310]
+    point = [55, 55]
     result = my_division(img, imgo)
-    cv2.imshow("binary image", result)
+    # cv2.imshow("binary image", result)
     code = pytesseract.image_to_string(result, lang='chi_sim')
     print(code)
     cv2.waitKey(0)
